@@ -4,6 +4,9 @@ node_modules/
 .knit
 knit.lock
 
+**/dist/
+**/lib/
+
 # IDE user config
 .vscode/
 .idea/

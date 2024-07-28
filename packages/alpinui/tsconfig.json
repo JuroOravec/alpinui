@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": [
+    "src",
+    "dev"
+  ],
+  "exclude": ["types-temp"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./types-temp",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "types": [
+        "jest",
+        "node"
+      ]
+    },
+    "stripInternal": true,
+    "skipLibCheck": true,
+  }
+}
