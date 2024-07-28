@@ -1,0 +1,11 @@
+@use '../settings';
+
+@mixin layer ($name) {
+  @if (settings.$layers) {
+    @layer alpinui.#{$name} {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

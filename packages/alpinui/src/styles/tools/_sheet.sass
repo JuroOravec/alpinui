@@ -1,0 +1,14 @@
+@mixin paper ($elevation, $radius, $shaped-radius)
+  @include tools.radius($radius)
+
+  &:not(.a-sheet--outlined)
+    @include tools.elevation($elevation)
+
+  @if ($shaped-radius)
+    &.a-sheet--shaped
+      @include tools.radius($shaped-radius)
+
+
+@mixin sheet ($component, $elevation, $radius, $shaped-radius)
+  .a-sheet.#{$component}
+    @include paper($elevation, $radius, $shaped-radius)

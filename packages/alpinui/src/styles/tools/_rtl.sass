@@ -1,0 +1,11 @@
+@use 'sass:selector'
+
+@mixin rtl()
+  @at-root #{selector.append('.a-locale--is-rtl', &)},
+  .a-locale--is-rtl &
+    @content
+
+@mixin ltr()
+  @at-root #{selector.append('.a-locale--is-ltr', &)},
+  .a-locale--is-ltr &
+    @content
