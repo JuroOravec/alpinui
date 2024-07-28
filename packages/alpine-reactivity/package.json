@@ -1,0 +1,65 @@
+{
+  "name": "alpine-reactivity",
+  "version": "0.1.7",
+  "private": false,
+  "description": "Vue reactivity for AlpineJS",
+  "author": "Juro Oravec <juraj.oravec.josefson@gmail.com>",
+  "homepage": "https://github.com/JuroOravec/alpinui/blob/main/packages/alpine-reactivity",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jurooravec/alpinui.git",
+    "directory": "packages/alpine-reactivity"
+  },
+  "bugs": {
+    "url": "https://github.com/jurooravec/alpinui/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "alpine",
+    "reactivity",
+    "vue"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/cjs/index.js"
+  },
+  "module": "dist/esm/index.js",
+  "types": "dist/cjs/index.d.js",
+  "bin": "dist/cjs/cli/index.js",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "npm run start:dev",
+    "start:prod": "node dist/cjs/index.js",
+    "start:dev": "ts-node ./src/index.ts",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:cdn",
+    "build:cdn": "rollup --config scripts/rollup.config.mjs",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "lint": "eslint ./src --ext .ts",
+    "lint:fix": "eslint ./src --ext .ts --fix",
+    "gen:docs": "typedoc src/index.ts --plugin typedoc-plugin-markdown --tsconfig tsconfig.base.json --out ./docs/typedoc"
+  },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "alpinejs": "^3.14.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "prettier": "^2.5.1",
+    "rollup": "^4.19.1",
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.25.0",
+    "typedoc-plugin-markdown": "^3.16.0",
+    "typescript": "^5.0.4",
+    "vue": "^3.4.34"
+  }
+}
