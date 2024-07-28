@@ -1,0 +1,27 @@
+<template>
+  <div>
+    <v-progress-linear
+      color="red-darken-2"
+      model-value="100"
+      rounded
+    ></v-progress-linear>
+    <br>
+    <v-progress-linear
+      color="indigo"
+      model-value="100"
+      rounded
+    ></v-progress-linear>
+    <br>
+    <v-progress-linear
+      color="teal"
+      model-value="100"
+      rounded
+    ></v-progress-linear>
+    <br>
+    <v-progress-linear
+      color="cyan-darken-2"
+      model-value="100"
+      rounded
+    ></v-progress-linear>
+  </div>
+</template>

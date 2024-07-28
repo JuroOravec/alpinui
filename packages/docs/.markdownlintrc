@@ -1,0 +1,14 @@
+{
+  "line-length": false,
+  "blanks-around-headings": true,
+  "single-title": {
+    "front_matter_title": ""
+  },
+  "no-trailing-punctuation": false,
+  "ol-prefix": false,
+  "no-inline-html": false,
+  "no-emphasis-as-heading": false,
+  "no-bare-urls": false,
+  "emphasis-style": false,
+  "link-fragments": false
+}

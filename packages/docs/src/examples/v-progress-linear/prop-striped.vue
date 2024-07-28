@@ -1,0 +1,31 @@
+<template>
+  <div>
+    <v-progress-linear
+      color="light-blue"
+      height="10"
+      model-value="10"
+      striped
+    ></v-progress-linear>
+    <br>
+    <v-progress-linear
+      color="light-green-darken-4"
+      height="10"
+      model-value="20"
+      striped
+    ></v-progress-linear>
+    <br>
+    <v-progress-linear
+      color="lime"
+      height="10"
+      model-value="45"
+      striped
+    ></v-progress-linear>
+    <br>
+    <v-progress-linear
+      color="deep-orange"
+      height="10"
+      model-value="60"
+      striped
+    ></v-progress-linear>
+  </div>
+</template>

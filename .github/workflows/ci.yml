@@ -1,0 +1,168 @@
+name: CI
+on: [push, pull_request]
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+  CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+jobs:
+  pre_job:
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        if: ${{ !startswith(github.ref, 'refs/tags/v') && github.ref != 'refs/heads/master' }}
+        uses: fkirc/skip-duplicate-actions@master
+        with:
+          skip_after_successful_duplicate: 'true'
+          concurrent_skipping: same_content
+          do_not_skip: '["pull_request", "workflow_dispatch", "schedule"]'
+
+  build-vuetify:
+    name: Build vuetify
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/yarn-install
+      - run: yarn build vuetify
+      - uses: ./.github/actions/upload-artifact
+        with:
+          name: vuetify-dist
+          path: >
+            packages/vuetify/dist
+            packages/vuetify/lib
+
+  lint:
+    name: Lint
+    needs: [pre_job, build-vuetify]
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        scopes: ['--scope vuetify --scope @vuetify/api-generator', '--scope vuetifyjs.com']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/download-artifact
+        with:
+          name: vuetify-dist
+      - uses: ./.github/actions/yarn-install
+      - run: yarn lerna run lint $SCOPES
+        env:
+          SCOPES: ${{ matrix.scopes }}
+
+  test-jest:
+    name: Test (Jest)
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/yarn-install
+      - run: yarn run test:coverage -i
+        working-directory: ./packages/vuetify
+      - uses: codecov/codecov-action@v4
+
+  test-cypress:
+    name: Test (Cypress)
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/yarn-install
+      - run: yarn cy:run --record --parallel --ci-build-id $GITHUB_RUN_ID
+        if: ${{ !startswith(github.ref, 'refs/tags/v') && github.repository_owner == 'vuetifyjs' }}
+        working-directory: ./packages/vuetify
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+      - run: yarn cy:run
+        if: ${{ !startswith(github.ref, 'refs/tags/v') && github.repository_owner != 'vuetifyjs' }}
+        working-directory: ./packages/vuetify
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: ./packages/vuetify/cypress/screenshots/
+          if-no-files-found: ignore
+
+  deploy:
+    needs: [lint, test-jest, test-cypress, build-vuetify]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startswith(github.ref, 'refs/tags/v') && github.repository_owner == 'vuetifyjs'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/download-artifact
+        with:
+          name: vuetify-dist
+      - uses: ./.github/actions/yarn-install
+      - run: yarn build api
+      - run: echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+      - name: NPM Release
+        run: bash scripts/deploy.sh
+        env:
+          NPM_API_KEY: ${{ secrets.NPM_TOKEN }}
+          RELEASE_TAG: ${{ env.RELEASE_TAG }}
+      - name: GitHub release
+        id: create_release
+        run: yarn conventional-github-releaser -p vuetify
+        env:
+          DEBUG: '*'
+          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-docs:
+    name: Build docs
+    needs: [pre_job, build-vuetify]
+    if: needs.pre_job.outputs.should_skip != 'true' && github.event_name == 'push' && github.repository_owner == 'vuetifyjs' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/next')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/download-artifact
+        with:
+          name: vuetify-dist
+      - uses: ./.github/actions/yarn-install
+      - uses: ./.github/actions/download-locales
+      - run: yarn build api
+      - run: yarn build docs
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+          VITE_COSMIC_2_BUCKET_SLUG: ${{ secrets.COSMIC_2_BUCKET_SLUG }}
+          VITE_COSMIC_2_BUCKET_READ_KEY: ${{ secrets.COSMIC_2_BUCKET_READ_KEY }}
+          VITE_COSMIC_BUCKET_SLUG: ${{ secrets.COSMIC_BUCKET_SLUG }}
+          VITE_COSMIC_BUCKET_READ_KEY: ${{ secrets.COSMIC_BUCKET_READ_KEY }}
+          VITE_COSMIC_BUCKET_SLUG_STORE: ${{ secrets.COSMIC_BUCKET_SLUG_STORE }}
+          VITE_COSMIC_BUCKET_READ_KEY_STORE: ${{ secrets.COSMIC_BUCKET_READ_KEY_STORE }}
+          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.EMAILJS_PUBLIC_KEY }}
+          VITE_EMAILJS_SERVICE_ID: ${{ secrets.EMAILJS_SERVICE_ID }}
+          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.EMAILJS_TEMPLATE_ID }}
+          VITE_API_SERVER_URL: ${{ secrets.API_SERVER_URL }}
+          VITE_GITHUB_SHA: ${{ github.sha }}
+      - uses: ./.github/actions/upload-artifact
+        with:
+          name: docs-dist
+          path: packages/docs/dist
+
+  publish-docs:
+    needs: [lint, test-jest, build-docs]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.repository_owner == 'vuetifyjs' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/next')
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/download-artifact
+        with:
+          name: docs-dist
+      - uses: ./.github/actions/yarn-install
+      - run: yarn global add vercel
+      - run: node scripts/deploy-and-alias.js ${{ github.ref }}
+        env:
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}

@@ -1,0 +1,62 @@
+// Styles
+import './VApp.sass'
+
+// Composables
+import { makeComponentProps } from '@/composables/component'
+import { createLayout, makeLayoutProps } from '@/composables/layout'
+import { useRtl } from '@/composables/locale'
+import { makeThemeProps, provideTheme } from '@/composables/theme'
+
+// Utilities
+import { Suspense } from 'vue'
+import { genericComponent, propsFactory, useRender } from '@/util'
+
+export const makeVAppProps = propsFactory({
+  ...makeComponentProps(),
+  ...makeLayoutProps({ fullHeight: true }),
+  ...makeThemeProps(),
+}, 'VApp')
+
+export const VApp = genericComponent()({
+  name: 'VApp',
+
+  props: makeVAppProps(),
+
+  setup (props, { slots }) {
+    const theme = provideTheme(props)
+    const { layoutClasses, getLayoutItem, items, layoutRef } = createLayout(props)
+    const { rtlClasses } = useRtl()
+
+    useRender(() => (
+      <div
+        ref={ layoutRef }
+        class={[
+          'v-application',
+          theme.themeClasses.value,
+          layoutClasses.value,
+          rtlClasses.value,
+          props.class,
+        ]}
+        style={[
+          props.style,
+        ]}
+      >
+        <div class="v-application__wrap">
+          <Suspense>
+            <>
+              { slots.default?.() }
+            </>
+          </Suspense>
+        </div>
+      </div>
+    ))
+
+    return {
+      getLayoutItem,
+      items,
+      theme,
+    }
+  },
+})
+
+export type VApp = InstanceType<typeof VApp>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vuetify Dev Playground</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link rel="icon" type="image/png" href="./favicon.png" sizes="16x16">
+
+    <link rel="stylesheet" href="/alpinui.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpine-provide-inject@0.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpine-reactivity@0.1.7/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpine-composition@0.1.15/dist/cdn.min.js"></script>
+    <script defer src="/alpinui.js"></script>
+    <script type="module" src="/index.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <div x-data="{ onEvent: () => { debugger; console.log('outerHandler')}}">
+      <div x-data="{ onEvent: () => { debugger; console.log('innerHandler')}}" @click="onEvent">
+        <button>
+          Click me!
+        </button>
+      </div>
+    </div>
+
+    <div x-data="Alpinui" x-props="{ onHello: (data) => { debugger; console.log({data});} }">
+      <span x-text="hello"></span>
+      <button @click="triggerEmit">
+        TriggerEvent
+      </button>
+
+      <hr
+        x-data="ADivider"
+        x-props="{ opacity: 0.3 }"
+        :class="hrClasses"
+        :style="hrStyles"
+        style="height: 20px; opacity: 0.3"
+        class="a-divider"
+        :aria-orientation="hrAriaOrient"
+        :role="hrRole"
+      />
+
+    </div>
+  </body>
+</html>

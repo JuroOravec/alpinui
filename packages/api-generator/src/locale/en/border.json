@@ -1,0 +1,5 @@
+{
+  "props": {
+    "border": "Designates the **border-radius** applied to the component. This can be **xs**, **sm**, **md**, **lg**, **xl**."
+  }
+}
