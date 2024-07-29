@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django_alpinui"
-version = "0.0.1"
+version = "0.0.4"
 requires-python = ">=3.8, <4.0"
 description = "UI component library for Django."
 keywords = [
