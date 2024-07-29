@@ -26,7 +26,7 @@ def alpine_obj(data: Dict):
     ```
     """
     key_val_pairs = ", ".join(
-        f"{key}: {val}" for key, val in data.items()
+        f"{key}: {val}" for key, val in data.items() if val is not None
     )
 
     return escape("{ " + key_val_pairs + " }")
