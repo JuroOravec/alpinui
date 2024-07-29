@@ -1,0 +1,109 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django_alpinui"
+version = "0.0.1"
+requires-python = ">=3.8, <4.0"
+description = "UI component library for Django."
+keywords = [
+    "django",
+    "css",
+    "js",
+    "html",
+    "component library",
+    "ui library",
+    "alpine",
+    "vuetify",
+]
+readme = "README.md"
+authors = [
+    {name = "Juro Oravec", email = "juraj.oravec.josefson@gmail.com"},
+]
+classifiers = [
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    'Django>=4.2',
+    'django-components>=0.84',
+]
+license = {text = "MIT"}
+
+[project.urls]
+Homepage = "https://github.com/JuroOravec/alpinui/blob/main/packages/alpinui-django"
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["django_alpinui*"]
+exclude = ["django_alpinui.tests*"]
+namespaces = false
+
+[tool.black]
+line-length = 119
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | activate
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 119
+multi_line_output = 3
+include_trailing_comma = "True"
+known_first_party = "django_alpinui"
+
+[tool.flake8]
+ignore = ['E302', 'W503']
+max-line-length = 119
+exclude = [
+  'migrations',
+  '__pycache__',
+  'manage.py',
+  'settings.py',
+  'env',
+  '.env',
+  '.venv',
+  '.tox',
+  'build',
+]
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+exclude = [
+    'test_structures',
+    'build',
+]
+
+[[tool.mypy.overrides]]
+module = "django_alpinui.*"
+disallow_untyped_defs = true
+
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
