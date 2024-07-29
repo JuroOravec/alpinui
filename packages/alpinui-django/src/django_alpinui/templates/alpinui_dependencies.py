@@ -48,15 +48,13 @@ class AlpinuiJs(component.Component):
             <script {{ defer }} src="{{ script }}"></script>
         {% endfor %}
 
-        {% if component_vars.is_filled.init %}
-            <script {{ defer }}>
-                document.addEventListener('alpine:init', () => {
-                    {% slot "init_js" default %}
-                        Alpinui.createAlpinui().install(Alpine);
-                    {% endslot %}
-                });
-            </script>
-        {% endif %}
+        <script {{ defer }}>
+            document.addEventListener('alpine:init', () => {
+                {% slot "init_js" default %}
+                    Alpinui.createAlpinui().install(Alpine);
+                {% endslot %}
+            });
+        </script>
 
         {% for script in alpine_scripts %}
             <script {{ defer }} src="{{ script }}"></script>
@@ -81,7 +79,7 @@ class AlpinuiCss(component.Component):
         }
 
     template: types.django_html = """
-        {% for links in links %}
+        {% for link in links %}
             <link rel="stylesheet" href="{{ link }}">
         {% endfor %}
     """
