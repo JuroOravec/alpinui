@@ -1,6 +1,6 @@
 {
   "name": "alpinui",
-  "description": "Material Component Framework for AlpineJS based on Vuetify",
+  "description": "Material UI Component Framework for Django based on Vuetify and AlpineJS",
   "version": "0.0.1",
   "author": "Juro Oravec <juraj.oravec.josefson@gmail.com>",
   "homepage": "https://github.com/JuroOravec/alpinui",

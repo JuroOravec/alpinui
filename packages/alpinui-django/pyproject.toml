@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "django_alpinui"
 version = "0.0.4"
 requires-python = ">=3.8, <4.0"
-description = "UI component library for Django."
+description = "Material UI Component library for Django based on Vuetify and AlpineJS"
 keywords = [
     "django",
     "css",
