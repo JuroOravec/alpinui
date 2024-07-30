@@ -14,9 +14,9 @@ export type AlpineType = _AlpineType;
 export type Data = Record<string, any>;
 
 export interface AlpineInstance <
-  T extends Data,
-  P extends Data,
-  E extends EmitsOptions,
+  T extends Data = Data,
+  P extends Data = Data,
+  E extends EmitsOptions = EmitsOptions,
 > extends Magics<P> {
   /** Name of the component. */
   $name: Readonly<string>;
@@ -51,9 +51,9 @@ export interface AlpineInstance <
 }
 
 export interface ComponentOptions <
-  T extends Data,
-  P extends Data,
-  E extends EmitsOptions,
+  T extends Data = Data,
+  P extends Data = Data,
+  E extends EmitsOptions = EmitsOptions,
 > {
   [key: string]: any;
   name: string;

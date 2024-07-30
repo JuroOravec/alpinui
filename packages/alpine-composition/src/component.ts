@@ -9,7 +9,11 @@ import type { EmitsToProps, EmitsOptions, ObjectEmitsOptions } from './emit';
 import type { AlpineInstance, AlpineType, ComponentOptions, Data } from './types';
 import { isInstanceOf } from './utils';
 
-export type AlpineVM<T extends Data, P extends Data, E extends EmitsOptions> = Pick<
+export type AlpineVM<
+  T extends Data = Data,
+  P extends Data = Data,
+  E extends EmitsOptions = EmitsOptions,
+> = Pick<
   AlpineInstance<T, P, E>,
   | '$name'
   | '$props'
