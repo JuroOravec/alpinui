@@ -6,9 +6,9 @@
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`Data`](../modules.md#data) |
-| `P` | extends [`Data`](../modules.md#data) |
-| `E` | extends [`EmitsOptions`](../modules.md#emitsoptions) |
+| `T` | extends [`Data`](../modules.md#data) = [`Data`](../modules.md#data) |
+| `P` | extends [`Data`](../modules.md#data) = [`Data`](../modules.md#data) |
+| `E` | extends [`EmitsOptions`](../modules.md#emitsoptions) = [`EmitsOptions`](../modules.md#emitsoptions) |
 
 ## Indexable
 
@@ -19,6 +19,8 @@
 ### Properties
 
 - [emits](ComponentOptions.md#emits)
+- [initKey](ComponentOptions.md#initkey)
+- [isolated](ComponentOptions.md#isolated)
 - [name](ComponentOptions.md#name)
 - [props](ComponentOptions.md#props)
 - [setup](ComponentOptions.md#setup)
@@ -35,7 +37,32 @@ See https://vuejs.org/api/options-state.html#emits
 
 #### Defined in
 
-packages/alpine-composition/src/types.ts:66
+[packages/alpine-composition/src/types.ts:62](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L62)
+
+___
+
+### initKey
+
+• `Optional` **initKey**: `string`
+
+Initial component state can be passed to the component as JSON via `data-x-init` HTML attribute.
+Change this option to override which `data-x-` key will be used.
+
+#### Defined in
+
+[packages/alpine-composition/src/types.ts:70](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L70)
+
+___
+
+### isolated
+
+• `Optional` **isolated**: `boolean`
+
+If `isolated`, the component DOES NOT have access to variables defined in parent components.
+
+#### Defined in
+
+[packages/alpine-composition/src/types.ts:65](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L65)
 
 ___
 
@@ -45,17 +72,17 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/types.ts:59
+[packages/alpine-composition/src/types.ts:55](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L55)
 
 ___
 
 ### props
 
-• **props**: `RequiredNotNull`\<`ComponentObjectPropsOptions`\<`P`\>\>
+• **props**: `ComponentObjectPropsOptions`\<`P`\>
 
 #### Defined in
 
-packages/alpine-composition/src/types.ts:60
+[packages/alpine-composition/src/types.ts:56](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L56)
 
 ___
 
@@ -81,4 +108,4 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/types.ts:67
+[packages/alpine-composition/src/types.ts:63](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L63)

@@ -28,7 +28,7 @@
 
 #### Defined in
 
-packages/alpine-composition/src/composition.ts:15
+[packages/alpine-composition/src/composition.ts:15](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/composition.ts#L15)
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/composition.ts:16
+[packages/alpine-composition/src/composition.ts:16](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/composition.ts#L16)
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/composition.ts:17
+[packages/alpine-composition/src/composition.ts:17](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/composition.ts#L17)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/composition.ts:18
+[packages/alpine-composition/src/composition.ts:18](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/composition.ts#L18)
 
 ___
 
@@ -68,4 +68,4 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/composition.ts:19
+[packages/alpine-composition/src/composition.ts:19](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/composition.ts#L19)

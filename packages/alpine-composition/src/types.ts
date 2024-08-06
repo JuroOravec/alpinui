@@ -5,10 +5,6 @@ import type { ComponentObjectPropsOptions } from 'vue';
 
 import type { EmitsToProps, EmitKeys, EmitsToEmitFns, EmitsOptions, ObjectEmitsOptions } from './emit';
 
-type RequiredNotNull<T> = {
-  [P in keyof T]: NonNullable<T[P]>
-}
-
 export type AlpineType = _AlpineType;
 
 export type Data = Record<string, any>;
@@ -57,7 +53,7 @@ export interface ComponentOptions <
 > {
   [key: string]: any;
   name: string;
-  props: RequiredNotNull<ComponentObjectPropsOptions<P>>;
+  props: ComponentObjectPropsOptions<P>;
   /**
    * Declare the custom events emitted by the component.
    * 
@@ -73,3 +69,9 @@ export interface ComponentOptions <
    */
   initKey?: string;
 }
+
+/** Convert ComponentOptions to AlpineInstance */
+export type AlpineInstanceFromOptions <T extends ComponentOptions<any, any, any>> =
+  T extends ComponentOptions<infer U, infer V, infer W>
+    ? AlpineInstance<U, V, W>
+    : never;

@@ -12,7 +12,7 @@ import { isInstanceOf } from './utils';
 export type AlpineVM<
   T extends Data = Data,
   P extends Data = Data,
-  E extends EmitsOptions = EmitsOptions,
+  E extends EmitsOptions = EmitsOptions
 > = Pick<
   AlpineInstance<T, P, E>,
   | '$name'
@@ -48,9 +48,11 @@ const isPropRequired = <P>(prop: NonNullable<Prop<P>>): boolean => {
   return !!prop.required;
 };
 
-const getPropType = <P>(prop: NonNullable<Prop<P>>) => {
+const getPropType = <P>(prop: Prop<P> | null) => {
   // Check if prop type is given as constructor
-  let propType = typeof prop === 'function' || Array.isArray(prop) ? prop : prop.type;
+  let propType = typeof prop === 'function' || Array.isArray(prop)
+    ? prop
+    : prop ? prop.type : null;
 
   if (typeof propType === 'function') {
     propType = [propType];
@@ -73,15 +75,15 @@ const useProps = <T extends Data, P extends Data, E extends EmitsOptions>(
   Alpine: AlpineType,
   instance: Magics<T>,
   propsDef: ComponentOptions<T, P, E>['props'],
-  emitOptions: ObjectEmitsOptions,
+  emitOptions: ObjectEmitsOptions
 ) => {
   const propsExpression = instance.$el.getAttribute('x-props') || 'undefined';
   const getGivenProps = Alpine.evaluateLater(instance.$el, propsExpression);
 
   const parsedProps = reactive<P & EmitsToProps<E>>({} as any);
-  
+
   const propKeys = Object.keys(propsDef);
-  
+
   for (const event of Object.keys(emitOptions)) {
     const eventProps = handlerKeys(event);
     propKeys.push(...eventProps);

@@ -13,6 +13,7 @@
 
 ### Type Aliases
 
+- [AlpineInstanceFromOptions](modules.md#alpineinstancefromoptions)
 - [AlpineType](modules.md#alpinetype)
 - [AlpineVM](modules.md#alpinevm)
 - [ComponentFactoryFn](modules.md#componentfactoryfn)
@@ -32,13 +33,31 @@
 
 ## Type Aliases
 
+### AlpineInstanceFromOptions
+
+Ƭ **AlpineInstanceFromOptions**\<`T`\>: `T` extends [`ComponentOptions`](interfaces/ComponentOptions.md)\<infer U, infer V, infer W\> ? [`AlpineInstance`](interfaces/AlpineInstance.md)\<`U`, `V`, `W`\> : `never`
+
+Convert ComponentOptions to AlpineInstance
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`ComponentOptions`](interfaces/ComponentOptions.md)\<`any`, `any`, `any`\> |
+
+#### Defined in
+
+[packages/alpine-composition/src/types.ts:74](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L74)
+
+___
+
 ### AlpineType
 
 Ƭ **AlpineType**: `_AlpineType`
 
 #### Defined in
 
-packages/alpine-composition/src/types.ts:12
+[packages/alpine-composition/src/types.ts:8](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L8)
 
 ___
 
@@ -50,13 +69,13 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `T` | extends [`Data`](modules.md#data) |
-| `P` | extends [`Data`](modules.md#data) |
-| `E` | extends [`EmitsOptions`](modules.md#emitsoptions) |
+| `T` | extends [`Data`](modules.md#data) = [`Data`](modules.md#data) |
+| `P` | extends [`Data`](modules.md#data) = [`Data`](modules.md#data) |
+| `E` | extends [`EmitsOptions`](modules.md#emitsoptions) = [`EmitsOptions`](modules.md#emitsoptions) |
 
 #### Defined in
 
-packages/alpine-composition/src/component.ts:12
+[packages/alpine-composition/src/component.ts:12](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/component.ts#L12)
 
 ___
 
@@ -88,7 +107,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/component.ts:219
+[packages/alpine-composition/src/component.ts:226](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/component.ts#L226)
 
 ___
 
@@ -98,7 +117,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/types.ts:14
+[packages/alpine-composition/src/types.ts:10](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L10)
 
 ___
 
@@ -108,7 +127,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/emit.ts:12
+[packages/alpine-composition/src/emit.ts:12](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/emit.ts#L12)
 
 ___
 
@@ -118,7 +137,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/emit.ts:7
+[packages/alpine-composition/src/emit.ts:7](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/emit.ts#L7)
 
 ___
 
@@ -151,7 +170,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/composition.ts:22
+[packages/alpine-composition/src/composition.ts:22](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/composition.ts#L22)
 
 ___
 
@@ -186,7 +205,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/component.ts:212
+[packages/alpine-composition/src/component.ts:219](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/component.ts#L219)
 
 ## Functions
 
@@ -218,7 +237,7 @@ packages/alpine-composition/src/component.ts:212
 
 #### Defined in
 
-packages/alpine-composition/src/composition.ts:39
+[packages/alpine-composition/src/composition.ts:39](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/composition.ts#L39)
 
 ___
 
@@ -246,7 +265,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/component.ts:206
+[packages/alpine-composition/src/component.ts:213](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/component.ts#L213)
 
 ___
 
@@ -267,7 +286,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/emit.ts:146
+[packages/alpine-composition/src/emit.ts:146](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/emit.ts#L146)
 
 ___
 
@@ -288,7 +307,7 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/component.ts:288
+[packages/alpine-composition/src/component.ts:304](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/component.ts#L304)
 
 ___
 
@@ -329,4 +348,4 @@ ___
 
 #### Defined in
 
-packages/alpine-composition/src/component.ts:223
+[packages/alpine-composition/src/component.ts:230](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/component.ts#L230)
