@@ -15,7 +15,6 @@ declare module 'alpinejs' {
       value: K extends InjectionKey<infer V> ? V : T
     ) => void;
     $inject: <T = any>(key: InjectionKey<T> | string, defaultVal?: T) => T;
-    $injectSelf: <T = any>(key: InjectionKey<T> | string, defaultVal?: T) => T;
   }
 }
 
@@ -57,11 +56,5 @@ export default function AlpineProvideInjectPlugin(Alpine: AlpineType) {
   // NOTE: $inject strictly looks for values in ancestors
   Alpine.magic('inject', (el) => {
     return (key: string | symbol, defaultVal?: any) => injectFn(el.parentElement, key, defaultVal, true)
-  })
-
-  // This is same as Vuetify's injectSelf - The value injected
-  // is searched ONLY in the current element.
-  Alpine.magic('injectSelf', (el) => {
-    return (key: string | symbol, defaultVal?: any) => injectFn(el, key, defaultVal, false)
   })
 }

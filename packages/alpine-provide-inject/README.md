@@ -23,12 +23,6 @@ Adds `$provide` and `$inject` magics. These work similar to Vue's `provide`/`inj
   <div x-data>
     <!-- This will show "Outer Value" -->
     <span x-text="$inject('key')"></span>
-
-    <!--
-      Similar to `$inject`, but will return value only
-      if the closest component provided the key
-     -->
-    <span x-text="$injectSelf('key')"></span>
   </div>
 </div>
 ```
