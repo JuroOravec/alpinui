@@ -90,7 +90,7 @@ const ripples = {
     const animation = document.createElement('span');
 
     container.appendChild(animation);
-    container.className = 'a-ripple__container';
+    container.className = 'v-ripple__container';
 
     if (value.class) {
       container.className += ` ${value.class}`;
@@ -99,7 +99,7 @@ const ripples = {
     const { radius, scale, x, y, centerX, centerY } = calculate(e, el, value);
 
     const size = `${radius * 2}px`;
-    animation.className = 'a-ripple__animation';
+    animation.className = 'v-ripple__animation';
     animation.style.width = size;
     animation.style.height = size;
 
@@ -111,14 +111,14 @@ const ripples = {
       el.dataset.previousPosition = 'static';
     }
 
-    animation.classList.add('a-ripple__animation--enter');
-    animation.classList.add('a-ripple__animation--visible');
+    animation.classList.add('v-ripple__animation--enter');
+    animation.classList.add('v-ripple__animation--visible');
     transform(animation, `translate(${x}, ${y}) scale3d(${scale},${scale},${scale})`);
     animation.dataset.activated = String(performance.now());
 
     setTimeout(() => {
-      animation.classList.remove('a-ripple__animation--enter');
-      animation.classList.add('a-ripple__animation--in');
+      animation.classList.remove('v-ripple__animation--enter');
+      animation.classList.add('v-ripple__animation--in');
       transform(animation, `translate(${centerX}, ${centerY}) scale3d(1,1,1)`);
     }, 0);
   },
@@ -126,7 +126,7 @@ const ripples = {
   hide(el: HTMLElement | null) {
     if (!el?._ripple?.enabled) return;
 
-    const ripples = el.getElementsByClassName('a-ripple__animation');
+    const ripples = el.getElementsByClassName('v-ripple__animation');
 
     if (ripples.length === 0) return;
     const animation = ripples[ripples.length - 1];
@@ -138,11 +138,11 @@ const ripples = {
     const delay = Math.max(250 - diff, 0);
 
     setTimeout(() => {
-      animation.classList.remove('a-ripple__animation--in');
-      animation.classList.add('a-ripple__animation--out');
+      animation.classList.remove('v-ripple__animation--in');
+      animation.classList.add('v-ripple__animation--out');
 
       setTimeout(() => {
-        const ripples = el.getElementsByClassName('a-ripple__animation');
+        const ripples = el.getElementsByClassName('v-ripple__animation');
         if (ripples.length === 1 && el.dataset.previousPosition) {
           el.style.position = el.dataset.previousPosition;
           delete el.dataset.previousPosition;
