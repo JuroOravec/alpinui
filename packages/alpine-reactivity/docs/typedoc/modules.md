@@ -55,7 +55,7 @@
 
 #### Defined in
 
-src/reactivity.ts:216
+[src/reactivity.ts:216](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L216)
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:39
+[src/reactivity.ts:39](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L39)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:47
+[src/reactivity.ts:47](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L47)
 
 ___
 
@@ -103,7 +103,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:152
+[src/reactivity.ts:152](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L152)
 
 ___
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:158
+[src/reactivity.ts:158](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L158)
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:256
+[src/reactivity.ts:256](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L256)
 
 ___
 
@@ -169,7 +169,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:252
+[src/reactivity.ts:252](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L252)
 
 ___
 
@@ -185,7 +185,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:254
+[src/reactivity.ts:254](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L254)
 
 ___
 
@@ -203,7 +203,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:258
+[src/reactivity.ts:258](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L258)
 
 ## Functions
 
@@ -229,7 +229,7 @@ src/reactivity.ts:258
 
 #### Defined in
 
-src/reactivity.ts:49
+[src/reactivity.ts:49](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L49)
 
 ___
 
@@ -243,7 +243,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:24
+[src/reactivity.ts:24](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L24)
 
 ___
 
@@ -269,7 +269,7 @@ value is ComputedRef\<T\>
 
 #### Defined in
 
-src/reactivity.ts:107
+[src/reactivity.ts:107](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L107)
 
 ___
 
@@ -295,7 +295,7 @@ value is Ref\<T\>
 
 #### Defined in
 
-src/reactivity.ts:101
+[src/reactivity.ts:101](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L101)
 
 ___
 
@@ -321,7 +321,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:70
+[src/reactivity.ts:70](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L70)
 
 ___
 
@@ -367,7 +367,7 @@ console.log(state.nested.value); // Output: 10
 
 #### Defined in
 
-src/reactivity.ts:191
+[src/reactivity.ts:191](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L191)
 
 ___
 
@@ -393,7 +393,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:72
+[src/reactivity.ts:72](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L72)
 
 ___
 
@@ -413,13 +413,13 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:20
+[src/reactivity.ts:20](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L20)
 
 ___
 
 ### shallowRef
 
-▸ **shallowRef**\<`T`\>(`initialValue?`): `T` extends [`Ref`](interfaces/Ref.md)\<`any`\> ? `T`\<`T`\> : [`Ref`](interfaces/Ref.md)\<`T`\>
+▸ **shallowRef**\<`T`\>(`initialValue?`): [`Ref`](interfaces/Ref.md)\<`T`\>
 
 #### Type parameters
 
@@ -435,11 +435,11 @@ ___
 
 #### Returns
 
-`T` extends [`Ref`](interfaces/Ref.md)\<`any`\> ? `T`\<`T`\> : [`Ref`](interfaces/Ref.md)\<`T`\>
+[`Ref`](interfaces/Ref.md)\<`T`\>
 
 #### Defined in
 
-src/reactivity.ts:117
+[src/reactivity.ts:117](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L117)
 
 ___
 
@@ -489,13 +489,13 @@ console.log(toRaw(reactiveFoo) === foo) // true
 
 #### Defined in
 
-src/reactivity.ts:150
+[src/reactivity.ts:150](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L150)
 
 ___
 
 ### toRef
 
-▸ **toRef**\<`T`, `K`\>(`object`, `key`): `T`[`K`] extends [`Ref`](interfaces/Ref.md)\<`any`\> ? `any`[`any`] : [`Ref`](interfaces/Ref.md)\<`T`[`K`]\>
+▸ **toRef**\<`T`, `K`\>(`object`, `key`): [`Ref`](interfaces/Ref.md)\<`T`[`K`]\>
 
 #### Type parameters
 
@@ -513,11 +513,11 @@ ___
 
 #### Returns
 
-`T`[`K`] extends [`Ref`](interfaces/Ref.md)\<`any`\> ? `any`[`any`] : [`Ref`](interfaces/Ref.md)\<`T`[`K`]\>
+[`Ref`](interfaces/Ref.md)\<`T`[`K`]\>
 
 #### Defined in
 
-src/reactivity.ts:129
+[src/reactivity.ts:129](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L129)
 
 ___
 
@@ -543,7 +543,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:142
+[src/reactivity.ts:142](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L142)
 
 ___
 
@@ -569,7 +569,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:113
+[src/reactivity.ts:113](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L113)
 
 ___
 
@@ -598,7 +598,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:292
+[src/reactivity.ts:302](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L302)
 
 ▸ **watch**\<`T`, `Immediate`\>(`source`, `cb`, `options?`): [`WatchStopHandle`](modules.md#watchstophandle)
 
@@ -623,7 +623,7 @@ src/reactivity.ts:292
 
 #### Defined in
 
-src/reactivity.ts:302
+[src/reactivity.ts:312](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L312)
 
 ___
 
@@ -643,13 +643,13 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:283
+[src/reactivity.ts:293](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L293)
 
 ___
 
 ### writableComputed
 
-▸ **writableComputed**\<`T`\>(`options`): `T` extends [`Ref`](interfaces/Ref.md)\<`any`\> ? `T`\<`T`\> : [`Ref`](interfaces/Ref.md)\<`T`\>
+▸ **writableComputed**\<`T`\>(`options`): [`Ref`](interfaces/Ref.md)\<`T`\>
 
 #### Type parameters
 
@@ -667,8 +667,8 @@ ___
 
 #### Returns
 
-`T` extends [`Ref`](interfaces/Ref.md)\<`any`\> ? `T`\<`T`\> : [`Ref`](interfaces/Ref.md)\<`T`\>
+[`Ref`](interfaces/Ref.md)\<`T`\>
 
 #### Defined in
 
-src/reactivity.ts:84
+[src/reactivity.ts:84](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L84)

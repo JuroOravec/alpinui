@@ -1,10 +1,5 @@
 alpine-reactivity / [Exports](modules.md)
 
-# TODO
-# TODO
-# TODO - Rebuild (also docs) and remove nexttick
-# TODO
-
 # Alpine reactivity
 
 _Vue reactivity for Alpine._

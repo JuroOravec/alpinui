@@ -84,7 +84,7 @@ export const ref = <T = any>(value: T | undefined = undefined): T extends Ref<an
 export const writableComputed = <T = any>(options: {
   get: () => T;
   set: (newVal: T) => void;
-}): T extends Ref<any> ? T : Ref<T> => {
+}): Ref<T> => {
   const r = Object.seal({
     [_refBrand]: true,
     get value() {
@@ -275,9 +275,19 @@ type MapOldSources<T, Immediate> = {
 
 const INITIAL_WATCHER_VALUE = {};
 
+const prepCb = (cb: (...args: any[]) => any, newVal: any, oldVal: any) => {
+  return () => 
+    cb(
+      newVal,
+      // pass undefined as the old value when it's changed for the first time
+      oldVal === INITIAL_WATCHER_VALUE ? undefined : oldVal
+    );
+}
+
 export interface WatchOptions<Immediate = boolean> {
   immediate?: Immediate;
   deep?: boolean;
+  flush?: 'pre' | 'sync' | 'post';
 }
 
 export function watchEffect(effect: () => unknown): WatchStopHandle {
@@ -317,7 +327,7 @@ export function watch<T = any>(
 function doWatch(
   source: WatchSource | WatchSource[] | WatchEffect,
   cb: WatchCallback,
-  { immediate, deep }: WatchOptions = {}
+  { immediate, deep, flush = 'pre' }: WatchOptions = {}
 ): WatchStopHandle {
   let getter: () => any;
   let isMultiSource = false;
@@ -365,12 +375,16 @@ function doWatch(
       : hasChanged(newValue, oldValue);
 
     if (didChange) {
-      cb(
-        newValue,
-        // pass undefined as the old value when it's changed for the first time
-        oldValue === INITIAL_WATCHER_VALUE ? undefined : oldValue
-      );
+      const runCb = prepCb(cb, newValue, oldValue);
       oldValue = newValue;
+
+      if (flush === 'post') {
+        getAlpine().nextTick(() => runCb());
+      } else {
+        // TODO: Assuming this behaves like `pre`, we don't really have implement
+        // for `sync`.
+        runCb();
+      }
     }
   });
 }

@@ -34,7 +34,7 @@
 
 #### Defined in
 
-src/reactivity.ts:35
+[src/reactivity.ts:35](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L35)
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:43
+[src/reactivity.ts:43](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L43)
 
 ___
 
@@ -60,4 +60,4 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:44
+[src/reactivity.ts:44](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L44)

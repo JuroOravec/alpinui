@@ -13,6 +13,7 @@
 ### Properties
 
 - [deep](WatchOptions.md#deep)
+- [flush](WatchOptions.md#flush)
 - [immediate](WatchOptions.md#immediate)
 
 ## Properties
@@ -23,7 +24,17 @@
 
 #### Defined in
 
-src/reactivity.ts:280
+[src/reactivity.ts:289](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L289)
+
+___
+
+### flush
+
+• `Optional` **flush**: ``"pre"`` \| ``"sync"`` \| ``"post"``
+
+#### Defined in
+
+[src/reactivity.ts:290](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L290)
 
 ___
 
@@ -33,4 +44,4 @@ ___
 
 #### Defined in
 
-src/reactivity.ts:279
+[src/reactivity.ts:288](https://github.com/JuroOravec/alpinui/blob/776eba5cb45e54fd3c07a38074142c3263ba6194/packages/alpine-reactivity/src/reactivity.ts#L288)
