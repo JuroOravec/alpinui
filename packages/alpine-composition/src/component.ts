@@ -58,10 +58,11 @@ const getPropType = <P>(prop: NonNullable<Prop<P>>) => {
   return propType;
 };
 
-const loadInitState = <T extends Data>(instance: Magics<T>) => {
-  if (!instance.$el.dataset.init) return;
+const loadInitState = <T extends Data>(instance: Magics<T>, initKey: string) => {
+  const dataKey = `x-${initKey}`;
+  if (!instance.$el.dataset[dataKey]) return;
 
-  const initState = JSON.parse(instance.$el.dataset.init);
+  const initState = JSON.parse(instance.$el.dataset[dataKey]!);
 
   Object.keys(initState).forEach((key) => {
     (instance as any)[key] = initState[key];
@@ -234,6 +235,7 @@ export const registerComponentFactory = <T extends Data, P extends Data, E exten
       emits: emitsDef,
       setup,
       isolated = true,
+      initKey = 'init',
     } = options;
 
     const readonlyOptions = Object.freeze({ ...options });
@@ -268,7 +270,7 @@ export const registerComponentFactory = <T extends Data, P extends Data, E exten
         init() {
           let instance = this as AlpineInstance<T, P, E>;
 
-          loadInitState(instance);
+          loadInitState(instance, initKey);
 
           parsedProps = useProps<T, P, E>(Alpine, instance as Magics<T>, propsDef, emitOptions);
 

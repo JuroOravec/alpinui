@@ -67,4 +67,9 @@ export interface ComponentOptions <
   setup: (props: Readonly<P & EmitsToProps<E>>, vm: AlpineInstance<T, P, E>, ...args: any[]) => T;
   /** If `isolated`, the component DOES NOT have access to variables defined in parent components. */
   isolated?: boolean;
+  /**
+   * Initial component state can be passed to the component as JSON via `data-x-init` HTML attribute.
+   * Change this option to override which `data-x-` key will be used.
+   */
+  initKey?: string;
 }

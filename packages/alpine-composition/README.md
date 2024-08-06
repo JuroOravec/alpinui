@@ -257,6 +257,69 @@ const Button = defineComponent({
 });
 ```
 
+## Initializing component state from HTML
+
+Sometimes, you may want to initialize a component to a certain state,
+without exposing the inner state as props.
+
+Imagine we have a button component, and we want to set the button width
+at page load. We want different buttons to have different width,
+but we want the width to remain constant for the rest of its existence.
+
+For this `alpine-composition` allows to set the internal component state
+from JSON, passed to the component as `data-x-init` attribute:
+
+```ts
+import { defineComponent, registerComponent } from 'alpine-composition';
+
+const Button = defineComponent({
+  name: 'Button',
+
+  setup(props, vm) {
+    // Either use the value defined outside, or default to '20px'
+    const buttonWidth = vm.buttonWidth || '20px';
+    const buttonStyle = `width: ${buttonWidth}; height: 40px; background: yellow;`;
+
+    return {
+      buttonStyle,
+    };
+  },
+});
+```
+
+Where does the value `vm.buttonWidth` come from? This is taken from the
+component's initial state. See below:
+
+```html
+<button x-data="Button" data-x-init='{ "buttonWidth": "100%" }' :style="buttonStyle">
+  Clock Me!
+</button>
+```
+
+You can change which data key is used for initial data by setting the `initKey` option.
+
+`initKey` should be a valid HTML attribute - it should be lowercase, and contain only
+letters and dashes.
+
+`initKey` will be prefixed with `x-` to avoid conflicts.
+
+So, in the example below, we can define the initial state via the `data-x-my-init`
+attribute by setting the `initKey` option to `my-init`:
+
+```ts
+const Button = defineComponent({
+  name: 'Button',
+  initKey: 'my-init',
+  setup(props, vm) { ... },
+});
+```
+
+```html
+<button x-data="Button" data-x-my-init='{ "buttonWidth": "100%" }' ...>
+  Clock Me!
+</button>
+```
+
 ## Extending
 
 `alpine-composition` comes with a plugin system that allows you to modify the Alpine instance
