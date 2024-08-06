@@ -1,7 +1,7 @@
 @use '../tools';
 
 @include tools.layer('transitions') {
-  @keyframes a-shake {
+  @keyframes v-shake {
     59% {
       margin-left: 0;
     }

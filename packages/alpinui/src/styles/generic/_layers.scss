@@ -1,7 +1,7 @@
 @use '../settings';
 
 @if (settings.$layers) {
-  @layer alpinui {
+  @layer vuetify {
     @layer reset, transitions, base, components, overrides, colors, theme, utilities;
   }
 }

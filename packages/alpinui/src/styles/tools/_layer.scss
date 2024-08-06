@@ -2,7 +2,7 @@
 
 @mixin layer ($name) {
   @if (settings.$layers) {
-    @layer alpinui.#{$name} {
+    @layer vuetify.#{$name} {
       @content;
     }
   } @else {

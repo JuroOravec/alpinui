@@ -10,7 +10,7 @@ $layers: false !default;
 $body-font-family: 'Roboto', sans-serif !default;
 $font-size-root: 1rem !default;
 $line-height-root: 1.5 !default;
-$border-color-root: rgba(var(--a-border-color), var(--a-border-opacity)) !default;
+$border-color-root: rgba(var(--v-border-color), var(--v-border-opacity)) !default;
 $border-radius-root: 4px !default;
 $border-style-root: solid !default;
 $border-width-root: thin !default;
@@ -54,12 +54,12 @@ $border-opacities: map-deep-merge(
 $opacities: () !default;
 $opacities: map-deep-merge(
   (
-    hover: var(--a-hover-opacity),
-    focus: var(--a-focus-opacity),
-    selected: var(--a-selected-opacity),
-    activated: var(--a-activated-opacity),
-    pressed: var(--a-pressed-opacity),
-    dragged: var(--a-dragged-opacity),
+    hover: var(--v-hover-opacity),
+    focus: var(--v-focus-opacity),
+    selected: var(--v-selected-opacity),
+    activated: var(--v-activated-opacity),
+    pressed: var(--v-pressed-opacity),
+    dragged: var(--v-dragged-opacity),
     0: 0,
     10: .1,
     20: .2,
@@ -78,12 +78,12 @@ $opacities: map-deep-merge(
 $states: () !default;
 $states: map-deep-merge(
     (
-    'hover': var(--a-hover-opacity),
-    'focus': var(--a-focus-opacity),
-    'selected': var(--a-selected-opacity),
-    'activated': var(--a-activated-opacity),
-    'pressed': var(--a-pressed-opacity),
-    'dragged': var(--a-dragged-opacity)
+    'hover': var(--v-hover-opacity),
+    'focus': var(--v-focus-opacity),
+    'selected': var(--v-selected-opacity),
+    'activated': var(--v-activated-opacity),
+    'pressed': var(--v-pressed-opacity),
+    'dragged': var(--v-dragged-opacity)
   ),
   $states
 );
