@@ -418,7 +418,7 @@ $utilities: () !default;
         values: variables.$borders
       ),
       "border-opacity": (
-        property: --v-border-opacity,
+        property: --a-border-opacity,
         class: border-opacity,
         values: variables.$border-opacities
       ),
@@ -485,9 +485,9 @@ $utilities: () !default;
         property: color,
         class: text,
         values: (
-          high-emphasis: rgba(var(--v-theme-on-background), var(--v-high-emphasis-opacity)),
-          medium-emphasis: rgba(var(--v-theme-on-background), var(--v-medium-emphasis-opacity)),
-          disabled: rgba(var(--v-theme-on-background), var(--v-disabled-opacity)),
+          high-emphasis: rgba(var(--a-theme-on-background), var(--a-high-emphasis-opacity)),
+          medium-emphasis: rgba(var(--a-theme-on-background), var(--a-medium-emphasis-opacity)),
+          disabled: rgba(var(--a-theme-on-background), var(--a-disabled-opacity)),
         )
       ),
       "text-overflow": (
