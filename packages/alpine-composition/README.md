@@ -210,6 +210,53 @@ const Button = defineComponent({
 });
 ```
 
+## Component isolation
+
+To make the Alpine components behave more like Vue, the components created by
+`registerComponent` are automatically isolated from outer components. This can
+be disabled by setting `isolated: false` on the component.
+
+Normally when you have an Alpine components like so:
+```html
+<div x-data="{ hello: 'world' }" id="outer"> 
+  <div x-data="{ foo: 'bar' }" id="inner">
+  </div>
+</div>
+```
+
+Then the inner component has access to the scope (data) from the outer components:
+
+```html
+<div x-data="{ hello: 'world' }" id="outer"> 
+  <div x-data="{ foo: 'bar' }" id="inner" x-text="hello + ' ' + foo">
+    <!-- Renders: 'world bar' -->
+  </div>
+</div>
+```
+
+However, to mimic Vue API, we need to explicitly pass down data as props.
+Because of this, components don't have access to the outer scopes:
+
+```html
+<div x-data="{ hello: 'world' }" id="outer"> 
+  <div x-data="{ foo: 'bar' }" x-props="{ hello2: hello }" id="inner" x-text="hello2 + ' ' + foo">
+    <!-- Renders: 'world bar' -->
+  </div>
+</div>
+```
+
+To allow access to outer scopes, set `isolated: false` on the component definition:
+
+```ts
+const Button = defineComponent({
+  name: 'Button',
+  props: { ... },
+  setup() { ... },
+
+  isolated: false,
+});
+```
+
 ## Extending
 
 `alpine-composition` comes with a plugin system that allows you to modify the Alpine instance

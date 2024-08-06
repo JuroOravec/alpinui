@@ -228,7 +228,13 @@ export const registerComponentFactory = <T extends Data, P extends Data, E exten
   registerFn: RegisterComponentFn<T, P, E>
 ) => {
   return (Alpine: AlpineType, options: ComponentOptions<T, P, E>) => {
-    const { name, props: propsDef, emits: emitsDef, setup } = options;
+    const {
+      name,
+      props: propsDef,
+      emits: emitsDef,
+      setup,
+      isolated = true,
+    } = options;
 
     const readonlyOptions = Object.freeze({ ...options });
     const emitOptions = Object.freeze(normalizeEmitsOptions(emitsDef ?? null));
@@ -266,7 +272,9 @@ export const registerComponentFactory = <T extends Data, P extends Data, E exten
 
           parsedProps = useProps<T, P, E>(Alpine, instance as Magics<T>, propsDef, emitOptions);
 
-          isolateInstance(instance);
+          if (isolated) {
+            isolateInstance(instance);
+          }
 
           instance = makeInstance(Alpine, instance);
 

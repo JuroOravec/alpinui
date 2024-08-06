@@ -65,4 +65,6 @@ export interface ComponentOptions <
    */
   emits?: E;
   setup: (props: Readonly<P & EmitsToProps<E>>, vm: AlpineInstance<T, P, E>, ...args: any[]) => T;
+  /** If `isolated`, the component DOES NOT have access to variables defined in parent components. */
+  isolated?: boolean;
 }
