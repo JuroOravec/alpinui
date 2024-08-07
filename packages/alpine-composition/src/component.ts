@@ -7,7 +7,7 @@ import type { ElementWithXAttributes, Magics } from 'alpinejs';
 import type { Prop } from 'vue';
 import type { EmitsToProps, EmitsOptions, ObjectEmitsOptions } from './emit';
 import type { AlpineInstance, AlpineType, ComponentOptions, Data } from './types';
-import { isInstanceOf } from './utils';
+import { isInstanceOf, isPromise } from './utils';
 
 export type AlpineVM<
   T extends Data = Data,
@@ -283,7 +283,12 @@ export const registerComponentFactory = <T extends Data, P extends Data, E exten
           instance = makeInstance(Alpine, instance);
 
           const data = setup(parsedProps, instance, ...args);
-          applySetupContextToVm(vm, data);
+
+          if (isPromise(data)) {
+            data.then((d) => applySetupContextToVm(vm, d))
+          } else {
+            applySetupContextToVm(vm, data);
+          }
         },
 
         $onBeforeUnmount(cb: () => void) {

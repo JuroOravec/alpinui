@@ -60,7 +60,7 @@ export interface ComponentOptions <
    * See https://vuejs.org/api/options-state.html#emits
    */
   emits?: E;
-  setup: (props: Readonly<P & EmitsToProps<E>>, vm: AlpineInstance<T, P, E>, ...args: any[]) => T;
+  setup: (props: Readonly<P & EmitsToProps<E>>, vm: AlpineInstance<T, P, E>, ...args: any[]) => T | Promise<T>;
   /** If `isolated`, the component DOES NOT have access to variables defined in parent components. */
   isolated?: boolean;
   /**

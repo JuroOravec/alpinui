@@ -37,7 +37,7 @@ See https://vuejs.org/api/options-state.html#emits
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:62](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L62)
+[packages/alpine-composition/src/types.ts:62](https://github.com/JuroOravec/alpinui/blob/f829af5845881c3f3635936f40ec3a743cba0f3f/packages/alpine-composition/src/types.ts#L62)
 
 ___
 
@@ -50,7 +50,7 @@ Change this option to override which `data-x-` key will be used.
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:70](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L70)
+[packages/alpine-composition/src/types.ts:70](https://github.com/JuroOravec/alpinui/blob/f829af5845881c3f3635936f40ec3a743cba0f3f/packages/alpine-composition/src/types.ts#L70)
 
 ___
 
@@ -62,7 +62,7 @@ If `isolated`, the component DOES NOT have access to variables defined in parent
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:65](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L65)
+[packages/alpine-composition/src/types.ts:65](https://github.com/JuroOravec/alpinui/blob/f829af5845881c3f3635936f40ec3a743cba0f3f/packages/alpine-composition/src/types.ts#L65)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:55](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L55)
+[packages/alpine-composition/src/types.ts:55](https://github.com/JuroOravec/alpinui/blob/f829af5845881c3f3635936f40ec3a743cba0f3f/packages/alpine-composition/src/types.ts#L55)
 
 ___
 
@@ -82,17 +82,17 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:56](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L56)
+[packages/alpine-composition/src/types.ts:56](https://github.com/JuroOravec/alpinui/blob/f829af5845881c3f3635936f40ec3a743cba0f3f/packages/alpine-composition/src/types.ts#L56)
 
 ___
 
 ### setup
 
-• **setup**: (`props`: `Readonly`\<`P` & `EmitsToProps`\<`E`\>\>, `vm`: [`AlpineInstance`](AlpineInstance.md)\<`T`, `P`, `E`\>, ...`args`: `any`[]) => `T`
+• **setup**: (`props`: `Readonly`\<`P` & `EmitsToProps`\<`E`\>\>, `vm`: [`AlpineInstance`](AlpineInstance.md)\<`T`, `P`, `E`\>, ...`args`: `any`[]) => `T` \| `Promise`\<`T`\>
 
 #### Type declaration
 
-▸ (`props`, `vm`, `...args`): `T`
+▸ (`props`, `vm`, `...args`): `T` \| `Promise`\<`T`\>
 
 ##### Parameters
 
@@ -104,8 +104,8 @@ ___
 
 ##### Returns
 
-`T`
+`T` \| `Promise`\<`T`\>
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:63](https://github.com/JuroOravec/alpinui/blob/a2fd79abfa69b0552ac4a3516f75ad6bd0e6fa23/packages/alpine-composition/src/types.ts#L63)
+[packages/alpine-composition/src/types.ts:63](https://github.com/JuroOravec/alpinui/blob/f829af5845881c3f3635936f40ec3a743cba0f3f/packages/alpine-composition/src/types.ts#L63)
