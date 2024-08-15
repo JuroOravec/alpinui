@@ -2,7 +2,7 @@
 
 // Types
 import type { Alpine as AlpineType } from 'alpinejs';
-import type { toRaw as _toRaw } from 'vue';
+import type { toRaw as _toRaw, stop as _stop } from 'vue';
 
 const _refBrand = Symbol('alpine-reactivity:ref');
 
@@ -147,7 +147,13 @@ export const toRefs = <T extends object>(object: T): ToRefs<T> => {
   return ret;
 };
 
+// See
+// https://github.com/alpinejs/alpine/blob/ab743bc5668f018db5d410cad4e48b755696ad9e/packages/alpinejs/src/index.js#L41C61-L41C62
 export const toRaw: typeof _toRaw = (...args) => getAlpine().raw(...args);
+
+// See
+// https://github.com/alpinejs/alpine/blob/ab743bc5668f018db5d410cad4e48b755696ad9e/packages/alpinejs/src/index.js#L41C61-L41C62
+export const stop: typeof _stop = (...args) => getAlpine().release(...(args as [any]));
 
 export type UnwrapRef<T> = T extends Ref<infer V>
   ? UnwrapRefSimple<V>

@@ -1,6 +1,6 @@
 {
   "name": "alpine-reactivity",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "description": "Vue reactivity for AlpineJS",
   "author": "Juro Oravec <juraj.oravec.josefson@gmail.com>",
