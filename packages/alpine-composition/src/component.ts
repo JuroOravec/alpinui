@@ -273,15 +273,31 @@ export const registerComponentFactory = <T extends Data, P extends Data, E exten
         init() {
           let instance = this as AlpineInstance<T, P, E>;
 
-          loadInitState(instance, initKey);
-
           parsedProps = useProps<T, P, E>(Alpine, instance as Magics<T>, propsDef, emitOptions);
 
+          // NOTE: The order here is important!
           if (isolated) {
+            // If the component is isolated, we achieve so by modifying the AlpineJS data
+            // Associated with the HTML element for this instance.
             isolateInstance(instance);
           }
 
+          // However, modifying AlpineJS data takes effect only for future Alpine component
+          // instances that will be created from given HTML element. As for the one we have
+          // currently, `instance`, we need to recreated it for the changes to take effect.
+          //
+          // In other words, the old `instance` still points to the additional contexts that
+          // we want to isolate from.
           instance = makeInstance(Alpine, instance);
+
+          // And only once we have the (possibly isolated) instance, we can load the initial
+          // state from the HTML. This must be done AFTER the above, because, Alpine contexts
+          // work kinda like Django's Context, in that it's a stack/array of objects, where each
+          // object represents one layer of the context. And if we introduce a new variable, it's
+          // written to the LAST context. But isolating a component also makes it lose all it's
+          // contexts except the FIRST one. So, effectively, throwing away all the changes applied
+          // to in `loadInitState`.
+          loadInitState(instance, initKey);
 
           const data = setup(parsedProps, instance, ...args);
 

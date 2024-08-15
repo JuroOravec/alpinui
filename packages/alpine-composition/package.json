@@ -1,6 +1,6 @@
 {
   "name": "alpine-composition",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "private": false,
   "description": "Vue composition API for AlpineJS",
   "author": "Juro Oravec <juraj.oravec.josefson@gmail.com>",
