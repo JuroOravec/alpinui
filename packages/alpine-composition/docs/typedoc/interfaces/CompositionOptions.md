@@ -24,4 +24,4 @@
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:36](https://github.com/JuroOravec/alpinui/blob/cb53256743337b271d8be16749ed81c26fe394c6/packages/alpine-composition/src/composition.ts#L36)
+[packages/alpine-composition/src/composition.ts:36](https://github.com/JuroOravec/alpinui/blob/7976f631b0f97a434b748005d636d655821241ac/packages/alpine-composition/src/composition.ts#L36)

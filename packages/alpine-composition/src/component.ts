@@ -61,10 +61,11 @@ const getPropType = <P>(prop: Prop<P> | null) => {
 };
 
 const loadInitState = <T extends Data>(instance: Magics<T>, initKey: string) => {
-  const dataKey = `x-${initKey}`;
-  if (!instance.$el.dataset[dataKey]) return;
+  const dataAttr = `data-x-${initKey}`;
+  const val = instance.$el.getAttribute(dataAttr)
+  if (val == null) return;
 
-  const initState = JSON.parse(instance.$el.dataset[dataKey]!);
+  const initState = JSON.parse(val);
 
   Object.keys(initState).forEach((key) => {
     (instance as any)[key] = initState[key];
