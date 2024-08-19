@@ -8,3 +8,4 @@
 4. **alpine-reactivity** - Vue [reactivity](https://github.com/vuejs/core/tree/main/packages/reactivity#readme) system for AlpineJS.
 5. **alpinui** - Main source code for Alpinui - framework, components, styles, etc.
 6. **alpinui-django** - Django UI component library
+7. **django-expr** - Django template tag library for evaluating Python expressions
