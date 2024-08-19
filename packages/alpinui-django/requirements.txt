@@ -10,7 +10,7 @@ django==5.1
     # via
     #   -r requirements.in
     #   django-components
-django-components==0.88
+django-components==0.90
     # via -r requirements.in
 sqlparse==0.5.1
     # via django
