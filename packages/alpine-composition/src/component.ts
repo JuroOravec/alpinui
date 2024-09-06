@@ -1,11 +1,11 @@
 // Utilities
-import { isComputed, isRef, reactive, watchEffect } from 'alpine-reactivity';
+import { reactive, watchEffect } from 'alpine-reactivity';
 import { emit, handlerKeys, normalizeEmitsOptions } from './emit';
 
 // Types
 import type { ElementWithXAttributes, Magics } from 'alpinejs';
-import type { Prop } from 'vue';
-import type { EmitsToProps, EmitsOptions, ObjectEmitsOptions } from './emit';
+import type { Prop, EmitsOptions, ObjectEmitsOptions } from 'vue';
+import type { EmitsToProps } from './emit';
 import type { AlpineInstance, AlpineType, ComponentOptions, Data } from './types';
 import { isInstanceOf, isPromise } from './utils';
 
@@ -78,8 +78,12 @@ const useProps = <T extends Data, P extends Data, E extends EmitsOptions>(
   propsDef: ComponentOptions<T, P, E>['props'],
   emitOptions: ObjectEmitsOptions
 ) => {
+  const compName = (instance as any as AlpineVM).$name;
   const propsExpression = instance.$el.getAttribute('x-props') || 'undefined';
-  const getGivenProps = Alpine.evaluateLater(instance.$el, propsExpression);
+
+  // NOTE: We want to use parentNode, so, inside `x-props`, we're using the data provided
+  // by the PARENT alpine components.
+  const getGivenProps = Alpine.evaluateLater(instance.$el.parentNode as Element, propsExpression);
 
   const parsedProps = reactive<P & EmitsToProps<E>>({} as any);
 
@@ -99,7 +103,7 @@ const useProps = <T extends Data, P extends Data, E extends EmitsOptions>(
         const propDef = propsDef[key];
 
         // Key is an event handler if it has no definition, in which
-        // case we don't don validation nor set defaults.
+        // case we don't do validation nor set defaults.
         if (!propDef) {
           (parsedProps as any)[key] = propVal;
           return;
@@ -117,7 +121,7 @@ const useProps = <T extends Data, P extends Data, E extends EmitsOptions>(
           } else if (!isRequired) {
             (parsedProps as any)[key] = undefined;
           } else {
-            throw Error(`Required prop '${key}' is missing`);
+            throw Error(`[alpine-composition] ${compName}: Required prop '${key}' is missing`);
           }
         }
 
@@ -131,7 +135,7 @@ const useProps = <T extends Data, P extends Data, E extends EmitsOptions>(
           (isRequired || (!isRequired && parsedProps[key] != undefined))
         ) {
           if (!isInstanceOf(propTypes as any, parsedProps[key])) {
-            throw Error(`Prop '${key}' is not an instance of ${propTypes}`);
+            throw Error(`[alpine-composition] ${compName}: Prop '${key}' is not an instance of ${propTypes}`);
           }
         }
       });
@@ -172,42 +176,7 @@ const applySetupContextToVm = <T extends Data, P extends Data, E extends EmitsOp
   data: T
 ) => {
   for (const attrname in data) {
-    // For any properties that we created using the `computed()` method, we
-    // transform it into a getter, so the value can be accessed from within
-    // the HTML without the `.value`.
-    /* eslint-disable brace-style */
-    if (data[attrname] && isComputed(data[attrname])) {
-      // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty#examples
-      Object.defineProperty(vm, attrname, {
-        get() {
-          return data[attrname].value;
-        },
-        enumerable: true,
-        configurable: false,
-      });
-    }
-
-    // For any properties that we created using the `ref()` method, we
-    // transform it into a getter/setter, so the value can be accessed
-    // from within the HTML without the `.value`.
-    else if (data[attrname] && isRef(data[attrname])) {
-      // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty#examples
-      Object.defineProperty(vm, attrname, {
-        get() {
-          return data[attrname].value;
-        },
-        set(val) {
-          return (data[attrname].value = val);
-        },
-        enumerable: true,
-        configurable: false,
-      });
-    }
-
-    // For non-ref values, just assign them as they are
-    else {
-      (vm as any)[attrname] = data[attrname];
-    }
+    (vm as any)[attrname] = data[attrname];
   }
 };
 

@@ -3,9 +3,9 @@ import { registerComponentFactory } from './component';
 
 // Types
 import type { AlpineComponent } from 'alpinejs';
+import type { EmitsOptions } from 'vue';
 import type { AlpineVM, ComponentFactoryFn } from './component';
 import type { AlpineType, ComponentOptions, Data } from './types';
-import type { EmitsOptions } from './emit';
 
 export interface PluginContext <
   T extends Data = Data,

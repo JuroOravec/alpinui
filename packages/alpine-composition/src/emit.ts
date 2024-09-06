@@ -1,15 +1,9 @@
 import type { UnionToIntersection } from '@vue/shared';
+import type { EmitsOptions, ObjectEmitsOptions } from 'vue';
 import type { AlpineInstance, Data } from './types';
 
 import { callWithAsyncErrorHandling } from './errorHandling';
 import { extend, isArray, isFunction, toHandlerKey } from './utils';
-
-export type ObjectEmitsOptions = Record<
-  string,
-  ((...args: any[]) => any) | null
->
-
-export type EmitsOptions = ObjectEmitsOptions | string[];
 
 export type EmitsToEmitFns<T extends EmitsOptions> = T extends string[]
   ? {
