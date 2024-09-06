@@ -8,7 +8,7 @@
 | :------ | :------ |
 | `T` | extends [`Data`](../modules.md#data) = [`Data`](../modules.md#data) |
 | `P` | extends [`Data`](../modules.md#data) = [`Data`](../modules.md#data) |
-| `E` | extends [`EmitsOptions`](../modules.md#emitsoptions) = [`EmitsOptions`](../modules.md#emitsoptions) |
+| `E` | extends `EmitsOptions` = `EmitsOptions` |
 
 ## Table of contents
 
@@ -24,4 +24,4 @@
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:36](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/composition.ts#L36)
+[packages/alpine-composition/src/composition.ts:36](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/composition.ts#L36)

@@ -106,12 +106,12 @@ document.addEventListener('alpine:init', () => {
       Inside of the component, we can access ONLY values
       returned from `setup()`
     -->
-    <span x-text="countFormatted"></span>
+    <span x-text="countFormatted.value"></span>
     <button @click="onClick">Click me!</button>
 
     <!-- You can even nest components -->
      <div x-data="Button" x-props="{ name: 'InnerButton' }">
-      <span x-text="countFormatted"></span>
+      <span x-text="countFormatted.value"></span>
       <button @click="onClick">Click me too!</button>
      </div>
 

@@ -1,6 +1,6 @@
 {
   "name": "alpine-composition",
-  "version": "0.1.21",
+  "version": "0.1.26",
   "private": false,
   "description": "Vue composition API for AlpineJS",
   "author": "Juro Oravec <juraj.oravec.josefson@gmail.com>",
@@ -63,6 +63,6 @@
     "vue": "^3.4.34"
   },
   "dependencies": {
-    "alpine-reactivity": "^0.1.9"
+    "alpine-reactivity": "^0.1.10"
   }
 }

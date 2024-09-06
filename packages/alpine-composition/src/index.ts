@@ -1,5 +1,5 @@
 export * from './component';
 export * from './composition';
+export * from './reactivity';
 export type * from './types';
-export type { EmitsOptions, ObjectEmitsOptions } from './emit';
 export { hasEvent } from './emit';

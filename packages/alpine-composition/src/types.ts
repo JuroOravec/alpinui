@@ -1,9 +1,26 @@
 // Types
 import type { Alpine as _AlpineType } from 'alpinejs';
 import type { Magics } from 'alpinejs';
-import type { ComponentObjectPropsOptions } from 'vue';
+import type {
+  ComponentObjectPropsOptions,
+  EmitsOptions,
+  ObjectEmitsOptions,
+  InjectionKey,
+} from 'vue';
 
-import type { EmitsToProps, EmitKeys, EmitsToEmitFns, EmitsOptions, ObjectEmitsOptions } from './emit';
+import type { EmitsToProps, EmitKeys, EmitsToEmitFns } from './emit';
+import type { ReactivityAPI } from './reactivity';
+
+declare module 'alpinejs' {
+  export interface Magics<T> {
+    // These magics come from alpine-provide-inject
+    $provide: <T, K = InjectionKey<T> | string | number>(
+      key: K,
+      value: K extends InjectionKey<infer V> ? V : T
+    ) => void;
+    $inject: <T = any>(key: InjectionKey<T> | string, defaultVal?: T) => T;
+  }
+}
 
 export type AlpineType = _AlpineType;
 
@@ -60,7 +77,12 @@ export interface ComponentOptions <
    * See https://vuejs.org/api/options-state.html#emits
    */
   emits?: E;
-  setup: (props: Readonly<P & EmitsToProps<E>>, vm: AlpineInstance<T, P, E>, ...args: any[]) => T | Promise<T>;
+  setup: (
+    props: Readonly<P & EmitsToProps<E>>,
+    vm: AlpineInstance<T, P, E>,
+    reactivity: ReactivityAPI,
+    ...args: any[]
+  ) => T | Promise<T>;
   /** If `isolated`, the component DOES NOT have access to variables defined in parent components. */
   isolated?: boolean;
   /**

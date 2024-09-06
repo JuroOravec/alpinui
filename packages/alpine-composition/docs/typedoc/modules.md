@@ -10,6 +10,7 @@
 - [ComponentOptions](interfaces/ComponentOptions.md)
 - [CompositionOptions](interfaces/CompositionOptions.md)
 - [PluginContext](interfaces/PluginContext.md)
+- [ReactivityAPI](interfaces/ReactivityAPI.md)
 
 ### Type Aliases
 
@@ -18,14 +19,13 @@
 - [AlpineVM](modules.md#alpinevm)
 - [ComponentFactoryFn](modules.md#componentfactoryfn)
 - [Data](modules.md#data)
-- [EmitsOptions](modules.md#emitsoptions)
-- [ObjectEmitsOptions](modules.md#objectemitsoptions)
 - [PluginFn](modules.md#pluginfn)
 - [RegisterComponentFn](modules.md#registercomponentfn)
 
 ### Functions
 
 - [createAlpineComposition](modules.md#createalpinecomposition)
+- [createReactivityAPI](modules.md#createreactivityapi)
 - [defineComponent](modules.md#definecomponent)
 - [hasEvent](modules.md#hasevent)
 - [registerComponent](modules.md#registercomponent)
@@ -47,7 +47,7 @@ Convert ComponentOptions to AlpineInstance
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:74](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/types.ts#L74)
+[packages/alpine-composition/src/types.ts:96](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L96)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:8](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/types.ts#L8)
+[packages/alpine-composition/src/types.ts:25](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L25)
 
 ___
 
@@ -71,11 +71,11 @@ ___
 | :------ | :------ |
 | `T` | extends [`Data`](modules.md#data) = [`Data`](modules.md#data) |
 | `P` | extends [`Data`](modules.md#data) = [`Data`](modules.md#data) |
-| `E` | extends [`EmitsOptions`](modules.md#emitsoptions) = [`EmitsOptions`](modules.md#emitsoptions) |
+| `E` | extends `EmitsOptions` = `EmitsOptions` |
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:12](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/component.ts#L12)
+[packages/alpine-composition/src/component.ts:13](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L13)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 | :------ | :------ |
 | `T` | extends [`Data`](modules.md#data) |
 | `P` | extends [`Data`](modules.md#data) |
-| `E` | extends [`EmitsOptions`](modules.md#emitsoptions) |
+| `E` | extends `EmitsOptions` |
 
 #### Type declaration
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:227](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/component.ts#L227)
+[packages/alpine-composition/src/component.ts:197](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L197)
 
 ___
 
@@ -117,27 +117,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:10](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/types.ts#L10)
-
-___
-
-### EmitsOptions
-
-Ƭ **EmitsOptions**: [`ObjectEmitsOptions`](modules.md#objectemitsoptions) \| `string`[]
-
-#### Defined in
-
-[packages/alpine-composition/src/emit.ts:12](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/emit.ts#L12)
-
-___
-
-### ObjectEmitsOptions
-
-Ƭ **ObjectEmitsOptions**: `Record`\<`string`, (...`args`: `any`[]) => `any` \| ``null``\>
-
-#### Defined in
-
-[packages/alpine-composition/src/emit.ts:7](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/emit.ts#L7)
+[packages/alpine-composition/src/types.ts:27](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L27)
 
 ___
 
@@ -151,7 +131,7 @@ ___
 | :------ | :------ |
 | `T` | extends [`Data`](modules.md#data) = [`Data`](modules.md#data) |
 | `P` | extends [`Data`](modules.md#data) = [`Data`](modules.md#data) |
-| `E` | extends [`EmitsOptions`](modules.md#emitsoptions) = [`EmitsOptions`](modules.md#emitsoptions) |
+| `E` | extends `EmitsOptions` = `EmitsOptions` |
 
 #### Type declaration
 
@@ -170,7 +150,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:22](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/composition.ts#L22)
+[packages/alpine-composition/src/composition.ts:22](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/composition.ts#L22)
 
 ___
 
@@ -184,7 +164,7 @@ ___
 | :------ | :------ |
 | `T` | extends [`Data`](modules.md#data) |
 | `P` | extends [`Data`](modules.md#data) |
-| `E` | extends [`EmitsOptions`](modules.md#emitsoptions) |
+| `E` | extends `EmitsOptions` |
 
 #### Type declaration
 
@@ -205,7 +185,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:220](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/component.ts#L220)
+[packages/alpine-composition/src/component.ts:190](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L190)
 
 ## Functions
 
@@ -219,7 +199,7 @@ ___
 | :------ | :------ |
 | `T` | extends [`Data`](modules.md#data) = [`Data`](modules.md#data) |
 | `P` | extends [`Data`](modules.md#data) = [`Data`](modules.md#data) |
-| `E` | extends [`EmitsOptions`](modules.md#emitsoptions) = [`EmitsOptions`](modules.md#emitsoptions) |
+| `E` | extends `EmitsOptions` = `EmitsOptions` |
 
 #### Parameters
 
@@ -237,7 +217,27 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:39](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/composition.ts#L39)
+[packages/alpine-composition/src/composition.ts:39](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/composition.ts#L39)
+
+___
+
+### createReactivityAPI
+
+▸ **createReactivityAPI**(`instance`): [`ReactivityAPI`](interfaces/ReactivityAPI.md)
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `instance` | [`AlpineInstance`](interfaces/AlpineInstance.md)\<`any`, `any`, `any`\> |
+
+#### Returns
+
+[`ReactivityAPI`](interfaces/ReactivityAPI.md)
+
+#### Defined in
+
+[packages/alpine-composition/src/reactivity.ts:72](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/reactivity.ts#L72)
 
 ___
 
@@ -251,7 +251,7 @@ ___
 | :------ | :------ |
 | `T` | extends [`Data`](modules.md#data) |
 | `P` | extends [`Data`](modules.md#data) |
-| `E` | extends [`EmitsOptions`](modules.md#emitsoptions) |
+| `E` | extends `EmitsOptions` |
 
 #### Parameters
 
@@ -265,7 +265,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:214](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/component.ts#L214)
+[packages/alpine-composition/src/component.ts:184](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L184)
 
 ___
 
@@ -286,7 +286,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/emit.ts:146](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/emit.ts#L146)
+[packages/alpine-composition/src/emit.ts:140](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/emit.ts#L140)
 
 ___
 
@@ -299,7 +299,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `Alpine` | `Alpine` |
-| `options` | [`ComponentOptions`](interfaces/ComponentOptions.md)\<[`Data`](modules.md#data), [`Data`](modules.md#data), [`EmitsOptions`](modules.md#emitsoptions)\> |
+| `options` | [`ComponentOptions`](interfaces/ComponentOptions.md)\<[`Data`](modules.md#data), [`Data`](modules.md#data), `EmitsOptions`\> |
 
 #### Returns
 
@@ -307,7 +307,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:326](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/component.ts#L326)
+[packages/alpine-composition/src/component.ts:298](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L298)
 
 ___
 
@@ -321,7 +321,7 @@ ___
 | :------ | :------ |
 | `T` | extends [`Data`](modules.md#data) |
 | `P` | extends [`Data`](modules.md#data) |
-| `E` | extends [`EmitsOptions`](modules.md#emitsoptions) |
+| `E` | extends `EmitsOptions` |
 
 #### Parameters
 
@@ -348,4 +348,4 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:231](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/component.ts#L231)
+[packages/alpine-composition/src/component.ts:201](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L201)

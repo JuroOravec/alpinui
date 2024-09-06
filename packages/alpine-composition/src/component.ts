@@ -8,6 +8,7 @@ import type { Prop, EmitsOptions, ObjectEmitsOptions } from 'vue';
 import type { EmitsToProps } from './emit';
 import type { AlpineInstance, AlpineType, ComponentOptions, Data } from './types';
 import { isInstanceOf, isPromise } from './utils';
+import { createReactivityAPI } from './reactivity';
 
 export type AlpineVM<
   T extends Data = Data,
@@ -268,7 +269,9 @@ export const registerComponentFactory = <T extends Data, P extends Data, E exten
           // to in `loadInitState`.
           loadInitState(instance, initKey);
 
-          const data = setup(parsedProps, instance, ...args);
+          const reactivityAPI = createReactivityAPI(instance);
+
+          const data = setup(parsedProps, instance, reactivityAPI, ...args);
 
           if (isPromise(data)) {
             data.then((d) => applySetupContextToVm(vm, d))

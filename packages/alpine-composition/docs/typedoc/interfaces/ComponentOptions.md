@@ -8,7 +8,7 @@
 | :------ | :------ |
 | `T` | extends [`Data`](../modules.md#data) = [`Data`](../modules.md#data) |
 | `P` | extends [`Data`](../modules.md#data) = [`Data`](../modules.md#data) |
-| `E` | extends [`EmitsOptions`](../modules.md#emitsoptions) = [`EmitsOptions`](../modules.md#emitsoptions) |
+| `E` | extends `EmitsOptions` = `EmitsOptions` |
 
 ## Indexable
 
@@ -37,7 +37,7 @@ See https://vuejs.org/api/options-state.html#emits
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:62](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/types.ts#L62)
+[packages/alpine-composition/src/types.ts:79](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L79)
 
 ___
 
@@ -50,7 +50,7 @@ Change this option to override which `data-x-` key will be used.
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:70](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/types.ts#L70)
+[packages/alpine-composition/src/types.ts:92](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L92)
 
 ___
 
@@ -62,7 +62,7 @@ If `isolated`, the component DOES NOT have access to variables defined in parent
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:65](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/types.ts#L65)
+[packages/alpine-composition/src/types.ts:87](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L87)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:55](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/types.ts#L55)
+[packages/alpine-composition/src/types.ts:72](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L72)
 
 ___
 
@@ -82,17 +82,17 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:56](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/types.ts#L56)
+[packages/alpine-composition/src/types.ts:73](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L73)
 
 ___
 
 ### setup
 
-• **setup**: (`props`: `Readonly`\<`P` & `EmitsToProps`\<`E`\>\>, `vm`: [`AlpineInstance`](AlpineInstance.md)\<`T`, `P`, `E`\>, ...`args`: `any`[]) => `T` \| `Promise`\<`T`\>
+• **setup**: (`props`: `Readonly`\<`P` & `EmitsToProps`\<`E`\>\>, `vm`: [`AlpineInstance`](AlpineInstance.md)\<`T`, `P`, `E`\>, `reactivity`: [`ReactivityAPI`](ReactivityAPI.md), ...`args`: `any`[]) => `T` \| `Promise`\<`T`\>
 
 #### Type declaration
 
-▸ (`props`, `vm`, `...args`): `T` \| `Promise`\<`T`\>
+▸ (`props`, `vm`, `reactivity`, `...args`): `T` \| `Promise`\<`T`\>
 
 ##### Parameters
 
@@ -100,6 +100,7 @@ ___
 | :------ | :------ |
 | `props` | `Readonly`\<`P` & `EmitsToProps`\<`E`\>\> |
 | `vm` | [`AlpineInstance`](AlpineInstance.md)\<`T`, `P`, `E`\> |
+| `reactivity` | [`ReactivityAPI`](ReactivityAPI.md) |
 | `...args` | `any`[] |
 
 ##### Returns
@@ -108,4 +109,4 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:63](https://github.com/JuroOravec/alpinui/blob/7c9bff530dfdab697d6922215320c4368f1f7322/packages/alpine-composition/src/types.ts#L63)
+[packages/alpine-composition/src/types.ts:80](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L80)
