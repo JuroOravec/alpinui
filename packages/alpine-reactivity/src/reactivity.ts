@@ -44,7 +44,7 @@ export interface ComputedRef<T = any> extends Ref<T> {
   readonly value: T;
 }
 
-export type ToRefs<T extends object> = { [K in keyof T]: ComputedRef<UnwrapRef<T[K]>> };
+export type ToRefs<T extends object> = { [K in keyof T]: Ref<UnwrapRef<T[K]>> };
 
 export const computed = <T = any>(cb: () => T) => {
   let innerValue: T;
@@ -135,14 +135,15 @@ export const toRef = <T extends object, K extends keyof T>(object: T, key: K) =>
   });
 };
 
-const propertyToRef = <T = any>(source: Record<string, any>, key: string) => {
-  return computed<T>(() => source[key]);
-};
-
 export const toRefs = <T extends object>(object: T): ToRefs<T> => {
   const ret: any = Array.isArray(object) ? new Array(object.length) : {};
   for (const key in object) {
-    ret[key] = propertyToRef(object, key);
+    // NOTE: For some reason having an object of computed's doesn't work.
+    // so internally we actually expose refs
+    ret[key] = ref(object[key]);
+    computed(() => {
+      ret[key].value = object[key];
+    });
   }
   return ret;
 };
