@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:15](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/composition.ts#L15)
+[packages/alpine-composition/src/composition.ts:15](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/composition.ts#L15)
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:16](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/composition.ts#L16)
+[packages/alpine-composition/src/composition.ts:16](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/composition.ts#L16)
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:17](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/composition.ts#L17)
+[packages/alpine-composition/src/composition.ts:17](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/composition.ts#L17)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:18](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/composition.ts#L18)
+[packages/alpine-composition/src/composition.ts:18](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/composition.ts#L18)
 
 ___
 
@@ -68,4 +68,4 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:19](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/composition.ts#L19)
+[packages/alpine-composition/src/composition.ts:19](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/composition.ts#L19)

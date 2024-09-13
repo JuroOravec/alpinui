@@ -51,7 +51,7 @@ HTML attributes (as object) of the element where the `x-data` was defined.
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:39](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L39)
+[packages/alpine-composition/src/types.ts:39](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L39)
 
 ___
 
@@ -156,7 +156,7 @@ bubble up. When no event handler is passed as a prop, the event is NOT sent.
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:57](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L57)
+[packages/alpine-composition/src/types.ts:57](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L57)
 
 ___
 
@@ -170,7 +170,7 @@ See https://vuejs.org/api/options-state.html#emits
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:47](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L47)
+[packages/alpine-composition/src/types.ts:47](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L47)
 
 ___
 
@@ -237,7 +237,7 @@ Magics.$inject
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:21](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L21)
+[packages/alpine-composition/src/types.ts:21](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L21)
 
 ___
 
@@ -249,7 +249,7 @@ Name of the component.
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:35](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L35)
+[packages/alpine-composition/src/types.ts:35](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L35)
 
 ___
 
@@ -304,7 +304,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:61](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L61)
+[packages/alpine-composition/src/types.ts:61](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L61)
 
 ___
 
@@ -316,7 +316,7 @@ Initial component definition.
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:41](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L41)
+[packages/alpine-composition/src/types.ts:41](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L41)
 
 ___
 
@@ -328,7 +328,7 @@ Props passed to the component as reactive object.
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:37](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L37)
+[packages/alpine-composition/src/types.ts:37](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L37)
 
 ___
 
@@ -364,7 +364,7 @@ Magics.$provide
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:17](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L17)
+[packages/alpine-composition/src/types.ts:17](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L17)
 
 ___
 
@@ -477,7 +477,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:63](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L63)
+[packages/alpine-composition/src/types.ts:63](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L63)
 
 ___
 
@@ -501,4 +501,4 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:62](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L62)
+[packages/alpine-composition/src/types.ts:62](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L62)

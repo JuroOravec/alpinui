@@ -10,7 +10,7 @@ _Vue composition API for AlpineJS._
 
 ```ts
 import { defineComponent, registerComponent } from 'alpine-composition';
-import { ref, computed, watch, setAlpine } from 'alpine-reactivity';
+import { setAlpine } from 'alpine-reactivity';
 
 // If the Alpine package is NOT available globally under
 // window.Alpine, set it here
@@ -33,9 +33,14 @@ const Button = defineComponent({
   },
 
   // Instead of Alpine's init(), use setup()
-  // Props are passed down as reactive props, same as in Vue
-  // Second argument is the Alpine component instance.
-  setup(props, vm) {
+  // - Props are passed down as reactive props, same as in Vue
+  // - Second argument is the Alpine component instance.
+  // - Third argument is reactivity API that is scoped to destroy references
+  //   when the component is destroyed.
+  // - Any additional args are inputs to `x-data`
+  setup(props, vm, reactivity, ...args) {
+    const { ref, toRefs, computed, watch, onBeforeUnmount } = reactivity;
+
     const { name, startCount } = toRefs(props);
 
     // Inside setup() you can use reactivity and composables
@@ -49,7 +54,7 @@ const Button = defineComponent({
 
     watch(counter, () => {
       // NOTE: `this` is undefined in `setup()`. Instead, use
-      // the second argument `vm`
+      // the second argument `vm` to access the component instance.
       vm.$dispatch('clicked', counter.value);
     });
 
@@ -61,7 +66,7 @@ const Button = defineComponent({
     // This behaves like Vue's `onBeforeUnmount` - it can be called
     // as many times as necessary.
     // At component's `destroy` event, all callbacks will be evaluated:
-    vm.$onBeforeUnmount(() => {
+    onBeforeUnmount(() => {
       disposeCounter();
     });
 
@@ -184,16 +189,17 @@ Use this instead of Alpine's `destroy` hook.
 
 ```ts
 import { defineComponent } from 'alpine-composition';
-import { ref, computed, watchEffect, setAlpine } from 'alpine-reactivity';
 
 const Button = defineComponent({
   name: 'Button',
-  setup(props, vm) {
+  setup(props, vm, reactivity) {
+    const { ref, computed, watch, onBeforeUnmount } = reactivity;
+
     const nameEl = vm.$el.querySelector('input[name="name"]');
     
     console.log(vm.$name);
 
-    vm.$onBeforeUnmount(() => {
+    onBeforeUnmount(() => {
       doUnregisterSomething();
     });
 

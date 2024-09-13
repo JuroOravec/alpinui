@@ -47,7 +47,7 @@ Convert ComponentOptions to AlpineInstance
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:96](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L96)
+[packages/alpine-composition/src/types.ts:96](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L96)
 
 ___
 
@@ -57,7 +57,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:25](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L25)
+[packages/alpine-composition/src/types.ts:25](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L25)
 
 ___
 
@@ -75,7 +75,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:13](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L13)
+[packages/alpine-composition/src/component.ts:13](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/component.ts#L13)
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:197](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L197)
+[packages/alpine-composition/src/component.ts:197](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/component.ts#L197)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:27](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L27)
+[packages/alpine-composition/src/types.ts:27](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L27)
 
 ___
 
@@ -150,7 +150,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:22](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/composition.ts#L22)
+[packages/alpine-composition/src/composition.ts:22](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/composition.ts#L22)
 
 ___
 
@@ -185,7 +185,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:190](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L190)
+[packages/alpine-composition/src/component.ts:190](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/component.ts#L190)
 
 ## Functions
 
@@ -217,7 +217,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/composition.ts:39](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/composition.ts#L39)
+[packages/alpine-composition/src/composition.ts:39](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/composition.ts#L39)
 
 ___
 
@@ -237,7 +237,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/reactivity.ts:72](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/reactivity.ts#L72)
+[packages/alpine-composition/src/reactivity.ts:72](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/reactivity.ts#L72)
 
 ___
 
@@ -265,7 +265,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:184](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L184)
+[packages/alpine-composition/src/component.ts:184](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/component.ts#L184)
 
 ___
 
@@ -286,7 +286,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/emit.ts:140](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/emit.ts#L140)
+[packages/alpine-composition/src/emit.ts:141](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/emit.ts#L141)
 
 ___
 
@@ -307,7 +307,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:298](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L298)
+[packages/alpine-composition/src/component.ts:298](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/component.ts#L298)
 
 ___
 
@@ -348,4 +348,4 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/component.ts:201](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/component.ts#L201)
+[packages/alpine-composition/src/component.ts:201](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/component.ts#L201)

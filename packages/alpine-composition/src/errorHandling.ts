@@ -1,16 +1,29 @@
 import { isArray, isFunction, isPromise } from './utils';
 
-export function callWithErrorHandling(fn: Function, args?: unknown[]) {
+export function callWithErrorHandling(
+  compName: string,
+  fn: Function,
+  args?: unknown[],
+) {
   try {
     return args ? fn(...args) : fn();
   } catch (err) {
+    const errMsg = (err as any).message;
+    if (errMsg != null) {
+      (err as any).message = `[alpine-composition] ${compName}: ${errMsg}`;
+    }
+
     logError(err);
   }
 }
 
-export function callWithAsyncErrorHandling(fn: Function | Function[], args?: unknown[]): any {
+export function callWithAsyncErrorHandling(
+  compName: string,
+  fn: Function | Function[],
+  args?: unknown[],
+): any {
   if (isFunction(fn)) {
-    const res = callWithErrorHandling(fn, args);
+    const res = callWithErrorHandling(compName, fn, args);
     if (res && isPromise(res)) {
       res.catch((err) => {
         logError(err);
@@ -22,12 +35,12 @@ export function callWithAsyncErrorHandling(fn: Function | Function[], args?: unk
   if (isArray(fn)) {
     const values: any[] = [];
     for (let i = 0; i < fn.length; i++) {
-      values.push(callWithAsyncErrorHandling(fn[i], args));
+      values.push(callWithAsyncErrorHandling(compName, fn[i], args));
     }
     return values;
   } else {
     console.warn(
-      `[alpine-composition] Invalid value type passed to callWithAsyncErrorHandling(): ${typeof fn}`
+      `[alpine-composition] ${compName}: Invalid value type passed to callWithAsyncErrorHandling(): ${typeof fn}`
     );
   }
 }

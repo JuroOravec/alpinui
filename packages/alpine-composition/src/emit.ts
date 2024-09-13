@@ -71,13 +71,14 @@ export function emit<T extends Data, P extends Data, E extends EmitsOptions>(
   event: EmitKeys<E>,
   ...rawArgs: any[]
 ) {
+  const name = instance.$name;
   const props = instance.$props;
   const emits = instance.$emitsOptions;
 
   if (!(event in emits)) {
     if (!props || !hasEvent(props, event)) {
       console.warn(
-        `[alpine-composition] Component emitted event "${event}" but it is neither ` +
+        `[alpine-composition] ${name}: Component emitted event "${event}" but it is neither ` +
           `declared in the emits option nor as an "${toHandlerKey(event)}" prop.`
       );
     }
@@ -87,7 +88,7 @@ export function emit<T extends Data, P extends Data, E extends EmitsOptions>(
       const isValid = validator(...rawArgs);
       if (!isValid) {
         console.warn(
-          `[alpine-composition] Invalid event arguments: event validation failed for event "${event}".`
+          `[alpine-composition] ${name}: Invalid event arguments: event validation failed for event "${event}".`
         );
       }
     }
@@ -97,7 +98,7 @@ export function emit<T extends Data, P extends Data, E extends EmitsOptions>(
   const handler = props[handlerName];
 
   if (handler) {
-    callWithAsyncErrorHandling(handler, rawArgs);
+    callWithAsyncErrorHandling(name, handler, rawArgs);
   }
 
   const onceHandler = props[handlerName + `Once`];
@@ -108,7 +109,7 @@ export function emit<T extends Data, P extends Data, E extends EmitsOptions>(
       return;
     }
     emitted[handlerName] = true;
-    callWithAsyncErrorHandling(onceHandler, rawArgs);
+    callWithAsyncErrorHandling(name, onceHandler, rawArgs);
   }
 }
 

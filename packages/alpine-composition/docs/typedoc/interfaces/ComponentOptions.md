@@ -37,7 +37,7 @@ See https://vuejs.org/api/options-state.html#emits
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:79](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L79)
+[packages/alpine-composition/src/types.ts:79](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L79)
 
 ___
 
@@ -50,7 +50,7 @@ Change this option to override which `data-x-` key will be used.
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:92](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L92)
+[packages/alpine-composition/src/types.ts:92](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L92)
 
 ___
 
@@ -62,7 +62,7 @@ If `isolated`, the component DOES NOT have access to variables defined in parent
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:87](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L87)
+[packages/alpine-composition/src/types.ts:87](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L87)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:72](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L72)
+[packages/alpine-composition/src/types.ts:72](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L72)
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:73](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L73)
+[packages/alpine-composition/src/types.ts:73](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L73)
 
 ___
 
@@ -109,4 +109,4 @@ ___
 
 #### Defined in
 
-[packages/alpine-composition/src/types.ts:80](https://github.com/JuroOravec/alpinui/blob/dbaa7294ea2259343e9b76d833f7d350eead1b5a/packages/alpine-composition/src/types.ts#L80)
+[packages/alpine-composition/src/types.ts:80](https://github.com/JuroOravec/alpinui/blob/2690b832ca277df66c6c8e994489b6d157fec859/packages/alpine-composition/src/types.ts#L80)
