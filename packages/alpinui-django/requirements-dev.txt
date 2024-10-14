@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements-dev.in
 #
-asgiref==3.7.2
+asgiref==3.8.1
     # via django
 black==24.4.2
     # via -r requirements-dev.in
@@ -32,7 +32,7 @@ cryptography==43.0.0
     # via secretstorage
 distlib==0.3.8
     # via virtualenv
-django==5.0.7
+django==5.1.2
     # via -r requirements-dev.in
 docutils==0.21.2
     # via readme-renderer
