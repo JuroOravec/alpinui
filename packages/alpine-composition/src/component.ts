@@ -67,10 +67,7 @@ const loadInitState = <T extends Data>(instance: Magics<T>, initKey: string) => 
   if (val == null) return;
 
   const initState = JSON.parse(val);
-
-  Object.keys(initState).forEach((key) => {
-    (instance as any)[key] = initState[key];
-  });
+  (instance as any).$initState = initState;
 };
 
 const useProps = <T extends Data, P extends Data, E extends EmitsOptions>(

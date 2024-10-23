@@ -161,7 +161,7 @@ const Button = defineComponent({
 Inside of the `setup()` method, you can access the Alpine component instance
 as the second argument. This instance has [all Alpine magics](https://alpinejs.dev/magics/el).
 
-`alpine-composition` adds 3 more magics:
+`alpine-composition` adds 8 more magics:
 
 - `$name` - Name of the component. Readonly property.
 
@@ -169,9 +169,11 @@ as the second argument. This instance has [all Alpine magics](https://alpinejs.d
 
 - `$attrs` - HTML attributes (as object) of the element where the `x-data` was defined.
 
-- `$options` - Initial component definition.
+- `$options` - Component definition.
 
 - `$emitsOptions` - Emits definition.
+
+- `$initState` - Initial state, set via `data-x-init`, [see below](#initializing-component-state-from-html).
 
 - `$emit` - Vue-like `emit()` method. Unlike `$dispatch`, `$emit` expects event handlers
 to be set as props (e.g. `onClickButton` or `onClickButtonOnce` for event `'clickButton'`).
@@ -283,7 +285,7 @@ const Button = defineComponent({
 
   setup(props, vm) {
     // Either use the value defined outside, or default to '20px'
-    const buttonWidth = vm.buttonWidth || '20px';
+    const buttonWidth = vm.$initState.buttonWidth || '20px';
     const buttonStyle = `width: ${buttonWidth}; height: 40px; background: yellow;`;
 
     return {
@@ -293,7 +295,7 @@ const Button = defineComponent({
 });
 ```
 
-Where does the value `vm.buttonWidth` come from? This is taken from the
+Where does the value `vm.$initState.buttonWidth` come from? This is taken from the
 component's initial state. See below:
 
 ```html

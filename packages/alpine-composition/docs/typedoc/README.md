@@ -163,7 +163,7 @@ const Button = defineComponent({
 Inside of the `setup()` method, you can access the Alpine component instance
 as the second argument. This instance has [all Alpine magics](https://alpinejs.dev/magics/el).
 
-`alpine-composition` adds 3 more magics:
+`alpine-composition` adds 7 more magics:
 
 - `$name` - Name of the component. Readonly property.
 

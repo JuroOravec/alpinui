@@ -173,8 +173,8 @@
     "vue-router": "^4.3.0"
   },
   "peerDependencies": {
-    "alpine-composition": "^0.1.19",
-    "alpine-reactivity": "^0.1.9",
+    "alpine-composition": "^0.1.28",
+    "alpine-reactivity": "^0.1.10",
     "typescript": ">=4.7"
   },
   "peerDependenciesMeta": {
