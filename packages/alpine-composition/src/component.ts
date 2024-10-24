@@ -240,6 +240,7 @@ export const registerComponentFactory = <T extends Data, P extends Data, E exten
         init() {
           let instance = this as AlpineInstance<T, P, E>;
 
+          // TODO
           parsedProps = useProps<T, P, E>(Alpine, instance as Magics<T>, propsDef, emitOptions);
 
           // NOTE: The order here is important!

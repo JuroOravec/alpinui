@@ -9,3 +9,7 @@
 5. **alpinui** - Main source code for Alpinui - framework, components, styles, etc.
 6. **alpinui-django** - Django UI component library
 7. **django-expr** - Django template tag library for evaluating Python expressions
+
+
+1. **api-generator** - generates api for Vuetify docs and other resources.
+2. **docs** - Vuetify documentation

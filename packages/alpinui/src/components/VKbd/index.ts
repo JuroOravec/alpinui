@@ -1,0 +1,1 @@
+export { VKbd } from './VKbd';

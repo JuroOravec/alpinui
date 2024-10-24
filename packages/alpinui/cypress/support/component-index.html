@@ -1,0 +1,31 @@
+<!-- See https://docs.cypress.io/guides/component-testing/component-framework-configuration#Custom-Index-File -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons' rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  </head>
+  <body>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpine-alpine@0.1.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpine-provide-inject@0.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpine-reactivity@0.1.10/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpine-composition@0.1.28/dist/cdn.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinui@0.0.4/dist/alpinui.js"></script>
+
+    <script>
+      debugger;
+      document.addEventListener('alpine:init', () => {
+        debugger;
+        AlpineReactivity.setAlpine(Alpine);
+        Alpinui.createAlpinui().install(Alpine);
+      });
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <div id="cy-root" data-cy-root></div>
+  </body>
+</html>

@@ -9,7 +9,39 @@ class AlpinuiConfig(AppConfig):
     # to Django's INSTALLED_APPS
     def ready(self) -> None:
         from django_alpinui.templates import (
-            adivider,
+            # Internal
+            _aoverlays,
+            _aif,
+            _slot,
+            # Custom
             alpinui,
             alpinui_dependencies,
+            # Vuetify / Alpinui components
+            aalert,
+            aalerttitle,
+            aapp,
+            aappbarnavicon,
+            aappbartitle,
+            aavatar,
+            abadge,
+            abannertext,
+            acardtitle,
+            acode,
+            adefaultsprovider,
+            adivider,
+            akbd,
+            alabel,
+            alistgroupactivator,
+            alistimg,
+            alistitemtitle,
+            alocaleprovider,
+            anossr,
+            apickertitle,
+            aspacer,
+            astepperheader,
+            atable,
         )
+
+        # TODO
+        from django_alpinui.templatetags.alpinui import register
+        print(register.tags)

@@ -1,94 +1,70 @@
 from typing import Dict, Optional
 
-from django_components import component, types
+from django.template import Context, Template
+from django_components import Component, SlotResult, types, register
 
-from django_alpinui.templatetags.alpinui import alpine_obj
-
-
-@component.register("ADividerWrapper")
-class ADividerWrapper(component.Component):
-    def get_context_data(
-        self,
-        *args,
-        attrs: Optional[Dict] = None,
-    ):
-        return {
-            "attrs": attrs,
-        }
-
-    template: types.django_html = """
-        <div
-          {% html_attrs attrs class="a-divider" %}
-          :class="wrapperClasses"
-        >
-          {% slot "divider" %}{% endslot %}
-
-          <div class="a-divider__content">
-            {% slot "default" default %}{% endslot %}
-          </div>
-
-          {% slot "divider" %}{% endslot %}
-        </div>
-    """
+from django_alpinui.gen.alpinui_types import ADividerAlpineCls
+from django_alpinui.templatetags.alpinui import alpinui_registry
 
 
-@component.register("ADividerRuler")
-class ADividerRuler(component.Component):
-    def get_context_data(
-        self,
-        *args,
-        attrs: Optional[Dict] = None,
-    ):
+class ADividerRuler(Component):
+    def get_context_data(self, /, attrs: Optional[Dict] = None) -> Dict:
         return {
             "attrs": attrs,
         }
 
     template: types.django_html = """
         <hr
-            {% html_attrs attrs class="a-divider" %}
-
-            {# AlpineJS binding #}
-            :class="hrClasses"
-            :style="hrStyles"
-            :aria-orientation="hrAriaOrient"
-            :role="hrRole"
+            {% html_attrs attrs
+                class="v-divider"
+                x-bind="genAttrs(hrProps)"
+            %}
         />
     """
 
 
-@component.register("ADivider")
-class ADivider(component.Component):
-    def get_context_data(
-        self,
-        *args,
-        opacity: Optional[str | float] = None,
-        attrs: Optional[Dict] = None,
-    ):
-        props = alpine_obj({"opacity": opacity})
-        attrs = {
-            **(attrs or {}),
-            "x-data": "ADivider",
-            "x-props": props,
-        }
-
+class ADividerWrapper(Component):
+    def get_context_data(self, /, attrs: Optional[Dict] = None) -> Dict:
         return {
             "attrs": attrs,
         }
 
     template: types.django_html = """
-        {% if component_vars.is_filled.default %}
-            {% component "ADividerWrapper" attrs=attrs %}
-                {% fill "divider" %}
-                    {% component "ADividerRuler" %}
-                    {% endcomponent %}
-                {% endfill %}
-                {% fill "default" %}
-                    {% slot "default" default %}{% endslot %}
-                {% endfill %}
-            {% endcomponent %}
+        {% load alpinui %}
 
-        {% else %}
-            {% component "ADividerRuler" attrs=attrs %}
-            {% endcomponent %}
-        {% endif %}
+        {% _ASlot name="divider" slot="default" id=self.component_id data="{}" %}
+            {% slot "default" default / %}
+        {% /_ASlot %}
+
+        <div
+          {% html_attrs attrs
+            class="v-divider__wrapper"
+            x-bind="genAttrs(wrapperProps)"
+          %}
+        >
+          {% slot "divider" / %}
+
+          <div class="v-divider__content">
+            {% _ASlotTarget name="divider" slot="default" id=self.component_id / %}
+          </div>
+
+          {% slot "divider" / %}
+        </div>
     """
+
+
+@register("ADivider", registry=alpinui_registry)
+class ADivider(ADividerAlpineCls):
+    def on_render(self, context: Context, template: Template) -> SlotResult:
+        if not self.input.slots.get("default"):
+            return ADividerRuler.render(
+                kwargs={"attrs": context["attrs"]},
+                slots=self.input.slots,
+                render_dependencies=False,
+            )
+        else:
+            return ADividerWrapper.render(
+                kwargs={"attrs": context["attrs"]},
+                slots=self.input.slots,
+                render_dependencies=False,
+            )

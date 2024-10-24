@@ -1,31 +1,26 @@
-from typing import Any, Dict, Optional
+from django_components import types, register
 
-from django_components import component, types
+from django_alpinui.gen.alpinui_types import AlpinuiAlpineCls
+from django_alpinui.templatetags.alpinui import alpinui_registry
 
-from django_alpinui.templatetags.alpinui import alpine_obj
+
+# TODO
+# class AlpinuiOptions(TypedDict):
+#     blueprint?: Blueprint
+#     date?: DateOptions
+#     defaults?: DefaultsOptions
+#     display?: DisplayOptions
+#     goTo?: GoToOptions
+#     theme?: ThemeOptions
+#     icons?: IconOptions
+#     locale?: LocaleOptions & RtlOptions
+#     ssr?: SSROptions
 
 
-@component.register("Alpinui")
-class Alpinui(component.Component):
-    def get_context_data(
-        self,
-        *args,
-        # JS variable or inlined object for AlpinuiOptions
-        options: Optional[Any] = None,
-        attrs: Optional[Dict] = None,
-    ):
-        props = alpine_obj({"options": options})
-        attrs = {
-            **(attrs or {}),
-            "x-data": "Alpinui",
-            "x-props": props,
-        }
-        return {
-            "attrs": attrs,
-        }
-
+@register("Alpinui", registry=alpinui_registry)
+class Alpinui(AlpinuiAlpineCls):
     template: types.django_html = """
-        <div {% html_attrs attrs %}>
-            {% slot "default" default %}{% endslot %}
+        <div {% html_attrs attrs %} class="v-alpinui">
+            {% slot "default" default / %}
         </div>
     """

@@ -1,2 +1,4 @@
 django
-django_components
+django_components==0.102
+typing_extensions
+pydantic

@@ -1,5 +1,5 @@
 // Types
-import type { ComponentOptions, Data, EmitsOptions } from 'alpine-composition';
+import type { Data } from 'alpine-composition';
 import type {
   EmitKeys,
   EmitsToEmitFns,
@@ -7,8 +7,12 @@ import type {
 } from 'alpine-composition/dist/cjs/emit';
 import type _Alpine from 'alpinejs';
 import type {
-  Slots,
+  ComponentObjectPropsOptions,
+  EmitsOptions,
+  ExtractPropTypes,
+  Slot,
   VNode,
+  VNodeTypes,
   computed as vueComputed,
   inject as vueInject,
   isRef as vueIsRef,
@@ -26,31 +30,46 @@ import type {
   watch as vueWatch,
   watchEffect as vueWatchEffect,
 } from 'vue';
+import type { IconComponent, IconSet } from '@/composables/icons';
+
+export type RawSlots = Record<string, unknown>
+
+export type Slots<T extends Record<string, any> = any> = Readonly<{
+  [K in keyof T]: Slot<T[K] extends never ? undefined : T[K]> | undefined;
+}>;
 
 export interface HeadlessComponentOptions<
   T extends Data,
-  P extends Data,
+  P extends ComponentObjectPropsOptions,
   E extends EmitsOptions,
   RI extends Data,
-  S extends Slots,
-> extends Pick<ComponentOptions<T, P, E>, 'name' | 'props' | 'emits'> {
+  S extends Record<string, any>,
+> {
   [key: string]: unknown;
+  name: string;
   aliasName?: string;
+  props: P;
   exposeDefaults?: boolean;
   slots?: S;
+  emits?: E;
   setupHeadless: (
-    props: Readonly<P & EmitsToProps<E>>,
-    vm: HeadlessInstance<P, E>,
+    props: Readonly<ExtractPropTypes<P> & EmitsToProps<E>>,
+    vm: HeadlessInstance<ExtractPropTypes<P>, E, S>,
   ) => {
-    expose: T;
+    expose: T | Promise<T>;
     renderInput: RI;
   };
-  renderHeadless: (vm: HeadlessInstance<P, E>, renderInput: RI, slots: S) => VNode | VNode[] | null;
+  renderHeadless: (
+    vm: HeadlessInstance<ExtractPropTypes<P>, E, S>,
+    renderInput: RI,
+    ctx: { slots: S, props: ExtractPropTypes<P>, attrs: Record<string, any> },
+  ) => VNode | VNode[] | null;
 }
 
 export interface HeadlessInstance<
   P extends Data = any,
   E extends EmitsOptions = any,
+  S extends Record<string, any> = Record<string, any>,
 > {
   type: 'vue' | 'alpine';
 
@@ -66,6 +85,18 @@ export interface HeadlessInstance<
   /** The current HTMLElement that triggered this expression. */
   el: HTMLElement | undefined;
   provides: Record<string, unknown>;
+  isUnmounted: boolean;
+  /** Info about which slots have been supplied as plain true/false */
+  hasSlots: Record<keyof S, boolean>;
+  icons: {
+    class: IconComponent | string;
+    component: IconComponent | string;
+    svg: IconComponent | string;
+  };
+  iconFallbackSet: {
+    name: string;
+    iconset: IconSet;
+  };
 
   /**
    * Vue-like `emit()` method. Unlike `$dispatch`, `$emit` expects event handlers
@@ -85,7 +116,7 @@ export interface HeadlessInstance<
   reactivity: HeadlessReactivity;
 
   propIsDefined: (prop: string) => boolean;
-  resolveDynamicComponent: (comp: string) => any;
+  resolveDynamicComponent: (comp: string) => VNodeTypes | null;
 }
 
 export interface HeadlessReactivity {
@@ -144,11 +175,17 @@ export interface HeadlessDirectiveBinding<
   modifiers: MOD;
 }
 
-export interface HeadlessDirective <
+export interface HeadlessDirective<
   T,
   MOD extends object = Partial<Record<string, boolean>>,
 > {
   mounted: (el: HTMLElement, binding: HeadlessDirectiveBinding<T, MOD>) => void;
-  updated?: (el: HTMLElement, binding: HeadlessDirectiveBinding<T, MOD>) => void;
-  unmounted: (el: HTMLElement, binding: HeadlessDirectiveBinding<T, MOD>) => void;
-};
+  updated?: (
+    el: HTMLElement,
+    binding: HeadlessDirectiveBinding<T, MOD>,
+  ) => void;
+  unmounted: (
+    el: HTMLElement,
+    binding: HeadlessDirectiveBinding<T, MOD>,
+  ) => void;
+}

@@ -9,6 +9,7 @@
 /types-temp/
 /dist/
 /dev/dist/
+/temp/
 
 # local env files
 .env.local

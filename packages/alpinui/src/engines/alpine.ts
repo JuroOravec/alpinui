@@ -15,20 +15,20 @@ import {
   watchEffect,
   writableComputed,
 } from 'alpine-reactivity';
-import { isFunction, mergeProps } from '@/util/helpers';
+import { isFunction, isPromise, mergeProps } from '@/util/helpers';
 
 // Types
 import type {
   AlpineInstance,
   ComponentOptions,
   Data,
-  EmitsOptions,
 } from 'alpine-composition';
 import type { WatchStopHandle } from 'alpine-reactivity';
 import type _Alpine from 'alpinejs';
 import type { DirectiveCallback } from 'alpinejs';
-import type { Slots } from 'vue';
+import type { EmitsOptions } from 'vue';
 import type { HeadlessComponentOptions, HeadlessDirective, HeadlessDirectiveBinding, HeadlessInstance, HeadlessReactivity } from './types';
+import { getIcons } from './util/icons';
 
 const createAlpineReactivity = (
   instance: AlpineInstance<any, any, any>,
@@ -192,9 +192,23 @@ const createAlpineHeadlessInstance = <
   T extends Data = Data,
   P extends Data = Data,
   E extends EmitsOptions = EmitsOptions,
+  S extends Record<string, any> = Record<string, any>,
 >(
     instance: AlpineInstance<T, P, E>,
-  ): HeadlessInstance<P, E> => {
+  ): HeadlessInstance<P, E, S> => {
+  // NOTE: All of our AlpineJS components instances should be given an info
+  // on which slots have been filled and which not. Since we have to pass that
+  // info ourselves, we validate it.
+  if (!instance.$initState.slots) {
+    /* eslint-disable-next-line */
+    console.warn('[Alpinui]: AlpineJS component is missing slots metadata');
+  }
+
+  let isUnmounted = false;
+  instance.$onBeforeUnmount(() => {
+    isUnmounted = true;
+  });
+
   return {
     type: 'alpine',
 
@@ -220,12 +234,24 @@ const createAlpineHeadlessInstance = <
       // @ts-expect-error
       return instance.$el._provides;
     },
+    get isUnmounted() {
+      return readonly(isUnmounted);
+    },
+    get hasSlots() {
+      return { ...instance.$initState.slots as Record<keyof S, boolean> };
+    },
+    get icons() {
+      return { ...getIcons().icons };
+    },
+    get iconFallbackSet() {
+      return { ...getIcons().fallbackIconset }; ;
+    },
 
     propIsDefined: (prop: string) => {
       return prop in instance.$props;
     },
     resolveDynamicComponent: (comp: string) => {
-      throw Error('"resolveDynamicComponent" is not implemented for AlpineJS');
+      return null;
     },
 
     emit: instance.$emit,
@@ -234,32 +260,41 @@ const createAlpineHeadlessInstance = <
   };
 };
 
-export const defineAlpineComponent = <
+export function defineAlpineComponent<
   T extends Data = Data,
   P extends Data = Data,
   E extends EmitsOptions = EmitsOptions,
   RI extends Data = Data,
-  S extends Slots = Slots,
+  S extends Record<string, any> = Record<string, any>,
 >({
-    setupHeadless,
-    // NOTE: render FN is ignored in AlpineJS
-    renderHeadless,
-    ...options
-  }: HeadlessComponentOptions<T, P, E, RI, S>): ComponentOptions<T & RI, P, E> => ({
+  setupHeadless,
+  // NOTE: render FN is ignored in AlpineJS
+  renderHeadless,
+  ...options
+}: HeadlessComponentOptions<T, P, E, RI, S>): ComponentOptions<T & RI, P, E> {
+  return {
     ...options,
     setup(props, instance) {
-      const headless = createAlpineHeadlessInstance(instance);
+      const headless = createAlpineHeadlessInstance<T & RI, P, E, S>(instance);
       const {
         expose,
         renderInput,
       } = setupHeadless(props, headless);
+
+      if (isPromise<T>(expose)) {
+        return expose.then((d) => ({
+          ...renderInput,
+          ...d,
+        }));
+      }
 
       return {
         ...renderInput,
         ...expose,
       };
     },
-  });
+  };
+};
 
 export const createAlpineDirective = <T, MOD extends Record<string, boolean>>({
   mounted,
@@ -315,4 +350,13 @@ export const createAlpineDirective = <T, MOD extends Record<string, boolean>>({
   };
 
   return alpineDirective;
+};
+
+export const createAlpineComposable = <TArgs extends any[], TRes extends any>(
+  fn: (vm: HeadlessInstance, ...args: TArgs) => TRes,
+): (vm: AlpineInstance<any, any, any>, ...args: TArgs) => TRes => {
+  return (vm, ...args: TArgs) => {
+    const headless = createAlpineHeadlessInstance(vm);
+    return fn(headless, ...args);
+  };
 };

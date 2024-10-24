@@ -1,9 +1,9 @@
-export { ClickOutside } from '@/directives/click-outside/a-click-outside';
-// export { Color } from './color'
-export { Intersect } from '@/directives/intersect/a-intersect';
-export { Mutate } from '@/directives/mutate/a-mutate';
-export { Resize } from '@/directives/resize/a-resize';
-export { Ripple } from '@/directives/ripple/a-ripple';
-export { Scroll } from '@/directives/scroll/a-scroll';
-export { Touch } from '@/directives/touch/a-touch';
+export { ClickOutside } from '@/directives/click-outside/index.alpine';
+// export { Color } from '@/directives/color/index.alpine'
+export { Intersect } from '@/directives/intersect/index.alpine';
+export { Mutate } from '@/directives/mutate/index.alpine';
+export { Resize } from '@/directives/resize/index.alpine';
+export { Ripple } from '@/directives/ripple/index.alpine';
+export { Scroll } from '@/directives/scroll/index.alpine';
+export { Touch } from '@/directives/touch/index.alpine';
 // export { Tooltip } from '@/directives/tooltip/a-tooltip';

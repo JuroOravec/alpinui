@@ -9,3 +9,7 @@ black
 mypy
 pip-tools
 twine
+playwright
+whitenoise
+requests
+types-requests
