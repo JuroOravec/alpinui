@@ -4,7 +4,7 @@ import { emit, handlerKeys, normalizeEmitsOptions } from './emit';
 
 // Types
 import type { ElementWithXAttributes, Magics } from 'alpinejs';
-import type { Prop, EmitsOptions, ObjectEmitsOptions } from 'vue';
+import type { Prop, EmitsOptions, ObjectEmitsOptions, ComponentObjectPropsOptions } from 'vue';
 import type { EmitsToProps } from './emit';
 import type { AlpineInstance, AlpineType, ComponentOptions, Data } from './types';
 import { isInstanceOf, isPromise } from './utils';
@@ -73,7 +73,7 @@ const loadInitState = <T extends Data>(instance: Magics<T>, initKey: string) => 
 const useProps = <T extends Data, P extends Data, E extends EmitsOptions>(
   Alpine: AlpineType,
   instance: Magics<T>,
-  propsDef: ComponentOptions<T, P, E>['props'],
+  propsDef: NonNullable<ComponentOptions<T, P, E>['props']>,
   emitOptions: ObjectEmitsOptions
 ) => {
   const compName = (instance as any as AlpineVM).$name;
@@ -240,7 +240,12 @@ export const registerComponentFactory = <T extends Data, P extends Data, E exten
         init() {
           let instance = this as AlpineInstance<T, P, E>;
 
-          parsedProps = useProps<T, P, E>(Alpine, instance as Magics<T>, propsDef, emitOptions);
+          parsedProps = useProps<T, P, E>(
+            Alpine,
+            instance as Magics<T>,
+            propsDef || {} as ComponentObjectPropsOptions<P>,
+            emitOptions,
+          );
 
           // NOTE: The order here is important!
           if (isolated) {
@@ -268,12 +273,12 @@ export const registerComponentFactory = <T extends Data, P extends Data, E exten
 
           const reactivityAPI = createReactivityAPI(instance);
 
-          const data = setup(parsedProps, instance, reactivityAPI, ...args);
+          const data = setup?.(parsedProps, instance, reactivityAPI, ...args);
 
           if (isPromise(data)) {
             data.then((d) => applySetupContextToVm(vm, d))
           } else {
-            applySetupContextToVm(vm, data);
+            applySetupContextToVm(vm, data ?? {} as T);
           }
         },
 

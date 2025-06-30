@@ -47,21 +47,21 @@ export interface ComputedRef<T = any> extends Ref<T> {
 export type ToRefs<T extends object> = { [K in keyof T]: Ref<UnwrapRef<T[K]>> };
 
 export const computed = <T = any>(cb: () => T) => {
-  let innerValue: T;
+  const innerValue = ref<T>();
 
   // Make sure that the computed value is accessible via `x.value`,
   // and that it's immutable from outside.
   const val: ComputedRef<T> = Object.freeze({
-    [_refBrand]: true,
+    [_refBrand]: true as const,
     effect: true,
     get value() {
-      return innerValue;
+      return innerValue.value;
     },
   });
 
   getAlpine().effect(() => {
     const res = cb();
-    innerValue = res;
+    innerValue.value = res;
   });
 
   return val;

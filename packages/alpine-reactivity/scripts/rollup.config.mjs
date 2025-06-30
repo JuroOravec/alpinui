@@ -1,4 +1,6 @@
-import packageJson from '../package.json' assert { type: 'json' };
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const packageJson = require('../package.json');
 
 import { babel } from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';

@@ -70,14 +70,14 @@ export interface ComponentOptions <
 > {
   [key: string]: any;
   name: string;
-  props: ComponentObjectPropsOptions<P>;
+  props?: ComponentObjectPropsOptions<P> | undefined | null;
   /**
    * Declare the custom events emitted by the component.
    * 
    * See https://vuejs.org/api/options-state.html#emits
    */
-  emits?: E;
-  setup: (
+  emits?: E | undefined | null;
+  setup?: (
     props: Readonly<P & EmitsToProps<E>>,
     vm: AlpineInstance<T, P, E>,
     reactivity: ReactivityAPI,
